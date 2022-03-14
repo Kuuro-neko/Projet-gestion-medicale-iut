@@ -10,15 +10,15 @@
 	<link rel="stylesheet" href="../css/accueil.css">
 	<link rel="icon" href="../images/logo.png" />
 	<title>Projet Gestion médicale</title>
-    <!--
-	<link rel="stylesheet" href="./css/accueil.css">
-	<link rel="icon" href="./images/TFT_icon.png" />
-    -->
 </head>
 
 <body>
-    <div class="main_container">
-		<div class="title">Gestion cabinet médical</div>
-		<div class="connection"></div>
-	</div>
+	<form class="connexion">
+   		<fieldset>
+			<legend class="title">Connexion</legend>
+			<input type="text" name="login" placeholder="Nom d'utilisateur"></input>
+			<input type="password" name ="password" placeholder="Mot de passe"></input>
+			<input type="button" name="signin" value="Se connecter"></input>
+		</fieldset>
+	</form>
 </body>
