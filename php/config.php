@@ -1,6 +1,6 @@
 <?php
     $server = "localhost";
-    $db = "carnetadresses";
+    $db = "gestionmedicale";
     $login = "root";
     $mdp = "";
 ?>
