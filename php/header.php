@@ -6,11 +6,11 @@
 			<ul>
 				<li><a href="accueil.php">Accueil</a>
 				</li>
-				<li><a href="patients.php">Gestion des patients</a>
+				<li><a href="patients.php">Patients</a>
 				</li>
-				<li><a href="medecins.php">Gestion des médecins</a>
+				<li><a href="medecins.php">Médecins</a>
 				</li>
-				<li><a href="rdv.php">Gestion des rendez-vous</a>
+				<li><a href="rdv.php">Rendez-vous</a>
 				</li>
 				<li><a href="<?php echo $thisPage; ?>.php?disconnect=true">Se déconnecter</a>
 				</li>
