@@ -3,5 +3,5 @@
 		<p>
 			Site web développé par <a href="mailto:gilles.gonzalezoropeza@etu.iut-tlse3.fr">Gonzalez Oropeza Gilles</a>
         </p>
-        <img class="logo" src="../images/logo.png" alt="Logo de l'IUT Info de Toulouse" height="55">
+        <img class="logo" src="../images/logo.png" alt="Logo de l'IUT Info de Toulouse" height="50">
 </footer>

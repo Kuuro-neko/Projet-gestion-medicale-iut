@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../php/config.php';
-$thisPage = "accueil";
+$thisPage = "patients";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
 if(empty($_SESSION['signedin'])) {
@@ -22,8 +22,8 @@ if(isset($_GET["disconnect"])) {
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/accueil.css">
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../css/patients.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="icon" href="../images/logo.png" />
@@ -34,7 +34,7 @@ if(isset($_GET["disconnect"])) {
 	<?php
 		include "../php/header.php";
 	?>
-	<h1>Accueil</h1>
+	<h1>Gestion des patients</h1>
 	<?php
 		include "../php/footer.php";
 	?>
