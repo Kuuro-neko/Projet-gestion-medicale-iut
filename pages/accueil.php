@@ -21,7 +21,10 @@ if(isset($_POST["disconnect"])) {
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/accueil.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../css/accueil.css">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<link rel="icon" href="../images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
@@ -31,4 +34,7 @@ if(isset($_POST["disconnect"])) {
             <input type="submit" value="Se déconnecter" name="disconnect">
          </form>
 	</form>
+	<?php
+		include "../php/footer.php";
+	?>
 </body>
