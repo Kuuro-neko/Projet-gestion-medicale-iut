@@ -1,3 +1,24 @@
+<?php
+session_start();
+include '../php/config.php';
+$msgErreur = "";
+// Rediriger vers l'accueil authentifié si l'utilisateur est déjà connecté
+if(!empty($_SESSION['signedin'])) {
+	header("Location: accueil.php");
+}
+// Si formulaire de connection rempli
+if(!empty($_POST['login']) && !empty($_POST['mdp']) && empty($_SESSION['signedin'])) {
+    //Essayer de se connecter avec les valeurs
+   if($_POST['login'] === $loginSite && $_POST['mdp'] === $mdpSite) {
+	   $_SESSION['signedin'] = true;
+	   header("Location: accueil.php");
+   } else {
+	   $msgErreur = "Login ou mdp erroné";
+   }
+} elseif (isset($_POST['signin'])) {
+	$msgErreur = "Veuillez renseigner les 2 champs";
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,18 +28,23 @@
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/accueil.css">
+	<link rel="stylesheet" href="../css/index.css">
 	<link rel="icon" href="../images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
 
 <body>
-	<form class="connexion">
+	<form action="index.php" class="connexion" method="post">
    		<fieldset>
 			<legend class="title">Connexion</legend>
 			<input type="text" name="login" placeholder="Nom d'utilisateur"></input>
-			<input type="password" name ="password" placeholder="Mot de passe"></input>
-			<input type="button" name="signin" value="Se connecter"></input>
+			<input type="password" name ="mdp" placeholder="Mot de passe"></input>
+			<?php
+			if ($msgErreur != "") {
+				echo "<p class=\"error\">".$msgErreur."</p>";
+			}
+			?>
+			<input type="submit" name="signin" value="Se connecter"></input>
 		</fieldset>
 	</form>
 </body>
