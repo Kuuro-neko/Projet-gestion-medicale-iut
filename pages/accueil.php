@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../php/config.php';
+require '../php/config.php';
 $thisPage = "accueil";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -17,7 +17,7 @@ if(isset($_GET["disconnect"])) {
 <html lang="fr">
 
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="description" content="Projet Gestion médicale">
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
@@ -39,3 +39,4 @@ if(isset($_GET["disconnect"])) {
 		include "../php/footer.php";
 	?>
 </body>
+</html>

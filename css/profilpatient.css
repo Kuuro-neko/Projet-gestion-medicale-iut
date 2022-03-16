@@ -1,0 +1,97 @@
+fieldset {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	border-radius: 15px;
+	background-color: var(--fg-color);
+
+	margin: 1em auto;
+	padding: 2em;
+	width: 44em;
+	height: 600px;
+	position: relative;
+}
+
+legend {
+	font-weight: 700;
+    font-size: 2em;
+	color: white;
+    text-transform: uppercase;
+	letter-spacing: 0.12em;
+    padding: 5% 30% 5% 15%;
+    background: var(--bg-color);
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+
+	line-height:50%;
+}
+
+input[type=text] {
+	background: var(--bg-color);
+	font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+	color: white;
+	border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid hsl(214, 13%, 16%);
+    display: block;
+    width: 40%;
+}
+
+input[type=submit] {
+	font-size: 1.2em;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	padding: 0.5em 2em;
+	margin: 2em 0 0;
+	width: 40%;
+	border-radius: 3px;
+	opacity: 0.8;
+	transition: all 0.2s ease;
+}
+
+input[type=submit]:hover {
+	opacity: 1;
+}
+
+.edit {
+	background: radial-gradient(var(--turquoise-logo),var(--bleu-logo));
+}
+
+.cancel {
+	background: radial-gradient(rgb(196, 131, 71), rgb(255, 110, 58));
+}
+
+.textinputs {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 100%;
+	height: 380px;
+	
+	color: white;
+}
+
+.submitinputs {
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	padding: 0% 5%;
+}
+
+form {
+	width: 100%;
+	height: 580px;
+}

@@ -1,11 +1,6 @@
 <?php
     // Connexion à la BD
-    try {
-        $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
-    }
-    catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
+    require '../php/connexiondb.php';
 
     // Séparation des critères de recherche
     $motsRecherche = explode(" ", $_POST["searchField"]);
@@ -39,7 +34,7 @@
                 <td>".$data['code_postal']."</td>
                 <td>".$data['ville']."</td>
                 <td><a href=\"profilpatient.php?id_patient=".$data['id_patient']."\">Modifier</a></td>
-                <td><a href=\"supprimerpatient.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
+                <td><a href=\"patients.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
                 array_push($id_patients_deja_trouves, $data['id_patient']);
             }
         }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../php/config.php';
+require '../php/config.php';
 include '../php/fonctions.php';
 $thisPage = "patients";
 
@@ -18,7 +18,7 @@ if(isset($_GET["disconnect"])) {
 <html lang="fr">
 
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="description" content="Projet Gestion médicale">
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
@@ -37,6 +37,23 @@ if(isset($_GET["disconnect"])) {
 		include "../php/header.php";
 	?>
 	<h1>Gestion des patients</h1>
+
+	<?php	
+	// Si patient supprimé
+	if(!empty($_GET['id_patient'])) {
+		require '../php/connexiondb.php';
+
+		$req = $linkpdo->prepare("DELETE from patient WHERE id_patient = :id_suppr");
+
+		if($req->execute(array('id_suppr'=>$_GET['id_patient']))) {
+			echo "<p class=\"success\">Patient supprimé avec succès !</p>";
+		} else {
+			echo "<p class=\"error\">Erreur lors de la suppression</p>";
+		}
+	}
+	?>
+
+
 	<div class="formContainer">
 		<fieldset>
 		<!-- Formulaire de recherche -->
@@ -57,9 +74,10 @@ if(isset($_GET["disconnect"])) {
 	</div>
 
 	<?php
-		if(isset($_POST['search']) && !empty($_POST['searchField'])) {
+		if((isset($_POST['search']) && !empty($_POST['searchField'])) || !empty($_GET['save_search'])) {
 			include '../php/recherchePatient.php';
 		}
 		include "../php/footer.php";
 	?>
 </body>
+</html>
