@@ -46,12 +46,7 @@ form input {
 th,td {
 	color: white;
 }
-.case {
-	display: flex;
-	flex-direction: column;
-}
 
-.caseH {
-	display: flex;
-	flex-direction: row;
+p {
+	color: white;
 }
