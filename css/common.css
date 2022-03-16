@@ -25,3 +25,8 @@ a {
 h1 {
 	color: var(--bleu-logo);
 }
+
+.error {
+	color: red;
+	margin: 0px;
+}

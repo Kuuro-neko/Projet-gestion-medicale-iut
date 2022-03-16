@@ -33,3 +33,25 @@ input[type=submit]:hover {
 	background-color: var(--fg-color);
 	min-height: 145px;
 }
+
+fieldset {
+	width: 100%;
+	margin: 5%;
+}
+
+form input {
+	min-width: 260px;
+}
+
+th,td {
+	color: white;
+}
+.case {
+	display: flex;
+	flex-direction: column;
+}
+
+.caseH {
+	display: flex;
+	flex-direction: row;
+}

@@ -68,8 +68,3 @@ input[type=submit] {
 input[type=submit]:hover {
 	opacity: 1;
 }
-
-.error {
-	color: red;
-	margin: 0px;
-}
