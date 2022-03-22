@@ -27,7 +27,7 @@ if(isset($_GET["disconnect"])) {
 	<link rel="stylesheet" type="text/css" href="../css/patients.css">
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
+
 	<link rel="icon" href="../images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
@@ -55,7 +55,8 @@ if(isset($_GET["disconnect"])) {
 
 
 	<div class="formContainer">
-		<fieldset>
+		<fieldset id="rechercher">
+			<legend>Rechercher un patient</legend>
 		<!-- Formulaire de recherche -->
 			<form class="forms" method="post">
 				<input type="text" name="searchField">
@@ -68,14 +69,43 @@ if(isset($_GET["disconnect"])) {
 			</form>
 		</fieldset>
 		<!-- Lien vers le formulaire d'ajout -->
-		<fieldset>
-			<a class="forms">Ajouter patient</a>
+		<fieldset id="ajouter" tabindex="0">
+		<legend>Ajouter un patient</legend>
+			<p id="invite">Cliquez pour ouvrir le formulaire d'ajout</p>
+   		 	<form id="formAjouter">
+				<div class="textinputs">
+					<select type="text" name="">
+						<option value="default">Civilité</option>
+						<option value="Monsieur">Monsieur</option>
+						<option value="Madame">Madame</option>
+					</select>
+					Nom <input type="text" name=""></input>
+					Prénom <input type="text" name=""></input>
+					Date de naissance <input type="text" name=""></input>
+					Lieu de naissance <input type="text" name=""></input>
+					<select type="text" name="">
+							<option value="default">Médecin traitant</option>
+							<option value="default">Aucun médecin traitant</option>
+							<option value="aaa">Med 1</option>
+							<option value="bbb">Med 2</option>
+					</select>
+					N° de sécurité sociale <input type="text" name=""></input>
+					Adresse <input type="text" name=""></input>
+					Code postal <input type="text" name=""></input>
+					Ville <input type="text" name=""></input>
+				</div>
+				<div class="addbutton">
+					<input type="submit" name="ajouter" value="Ajouter"></input>
+				</div>
+			</form>
 		</fieldset>
 	</div>
 
 	<?php
 		if((isset($_POST['search']) && !empty($_POST['searchField'])) || !empty($_GET['save_search'])) {
+			echo "<div id=\"resultatsContainer\">";
 			include '../php/recherchePatient.php';
+			echo "</div>";
 		}
 		include "../php/footer.php";
 	?>

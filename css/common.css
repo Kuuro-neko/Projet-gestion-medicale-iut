@@ -35,3 +35,16 @@ h1 {
 	color: lightgreen;
 	margin: 0px;
 }
+
+#resultatsRecherche {
+	z-index: 1;
+
+	background-color: var(--fg-color);
+	margin-top: 5em;
+	margin-bottom: 5em;
+	padding: 5px;
+	border-radius: 10px;
+	border-width: 1px;
+    border-style: solid;
+}
+

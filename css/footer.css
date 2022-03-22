@@ -12,6 +12,7 @@ footer {
 	align-items: center;
 	justify-content: space-between;
 	border-top: 2px solid rgb(98, 98, 98);
+	z-index: 3;
 }
 
 

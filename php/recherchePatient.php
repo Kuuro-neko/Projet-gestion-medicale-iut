@@ -12,17 +12,20 @@
     (patient.nom LIKE :search OR patient.prenom LIKE :search OR adresse LIKE :search OR code_postal
     LIKE :search OR ville LIKE :search OR num_ss LIKE :search OR lieu_naissance LIKE :search)");
     ?>
-    <table>
-        <tr><th>Civilité</th><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Lieu de naissance</th><th>n° sécurité sociale</th><th>Médecin traitant</th><th>Adresse</th><th>Code postal</th><th>Ville</th><th></th><th></th></tr>
+    <table id="resultatsRecherche">
+        <tr id="tete"><th>Civilité</th><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Lieu de naissance</th><th>n° sécurité sociale</th><th>Médecin traitant</th><th>Adresse</th><th>Code postal</th><th>Ville</th><td></td><td></td></tr>
     <?php
     // Tableau pour supprimer les résultats en double
     $id_patients_deja_trouves = array();
     // Parcours de la requête
+    $i = 0;
     foreach($motsRecherche as $mot) {
         $req->execute(array('search'=>'%'.$mot.'%'));
         while($data = $req->fetch()) {
             if (!in_array($data['id_patient'], $id_patients_deja_trouves)) {
-                echo "<tr>
+                $parite = ($i % 2 == 0) ? "pair" : "impair";
+                $i++;
+                echo "<tr class=\"".$parite."\">
                 <td>".$data['pcivilite']."</td>
                 <td>".$data['pnom']."</td>
                 <td>".$data['pprenom']."</td>
@@ -33,8 +36,8 @@
                 <td>".$data['adresse']."</td>
                 <td>".$data['code_postal']."</td>
                 <td>".$data['ville']."</td>
-                <td><a href=\"profilpatient.php?id_patient=".$data['id_patient']."\">Modifier</a></td>
-                <td><a href=\"patients.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
+                <td class=\"editcell\"><a href=\"profilpatient.php?id_patient=".$data['id_patient']."\">Modifier</a></td>
+                <td class=\"delcell\"><a href=\"patients.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
                 array_push($id_patients_deja_trouves, $data['id_patient']);
             }
         }
