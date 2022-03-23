@@ -72,27 +72,24 @@ if(isset($_GET["disconnect"])) {
 		<fieldset id="ajouter" tabindex="0">
 		<legend>Ajouter un patient</legend>
 			<p id="invite">Cliquez pour ouvrir le formulaire d'ajout</p>
-   		 	<form id="formAjouter">
+   		 	<form id="formAjouter" method="post">
 				<div class="textinputs">
-					<select type="text" name="">
-						<option value="default">Civilité</option>
+					<select name="civilite">
+						<option value="">Civilité</option>
 						<option value="Monsieur">Monsieur</option>
 						<option value="Madame">Madame</option>
 					</select>
-					Nom <input type="text" name=""></input>
-					Prénom <input type="text" name=""></input>
-					Date de naissance <input type="text" name=""></input>
-					Lieu de naissance <input type="text" name=""></input>
-					<select type="text" name="">
-							<option value="default">Médecin traitant</option>
-							<option value="default">Aucun médecin traitant</option>
-							<option value="aaa">Med 1</option>
-							<option value="bbb">Med 2</option>
-					</select>
-					N° de sécurité sociale <input type="text" name=""></input>
-					Adresse <input type="text" name=""></input>
-					Code postal <input type="text" name=""></input>
-					Ville <input type="text" name=""></input>
+					Nom <input type="text" name="nom"></input>
+					Prénom <input type="text" name="prenom"></input>
+					Date de naissance <input type="text" name="date_naissance"></input>
+					Lieu de naissance <input type="text" name="lieu_naissance"></input>
+					<?php 
+						include "../php/selectMedecinTraitants.php";
+					?>
+					N° de sécurité sociale <input type="text" name="num_ss"></input>
+					Adresse <input type="text" name="adresse"></input>
+					Code postal <input type="text" name="code_postal"></input>
+					Ville <input type="text" name="ville"></input>
 				</div>
 				<div class="addbutton">
 					<input type="submit" name="ajouter" value="Ajouter"></input>

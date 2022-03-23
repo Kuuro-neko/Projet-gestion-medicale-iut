@@ -7,8 +7,14 @@
 
     //Préparation de la requête
     $req = $linkpdo->prepare("SELECT patient.nom pnom, patient.prenom pprenom, patient.civilite pcivilite, date_naissance,
-    lieu_naissance, num_ss, adresse, code_postal, ville, medecin.nom mnom, medecin.prenom mprenom, id_patient
+    lieu_naissance, num_ss, adresse, code_postal, ville, medecin.nom mnom, medecin.prenom mprenom, id_patient, patient.id_medecin as id_medtraitant
     FROM patient, medecin WHERE patient.id_medecin = medecin.id_medecin AND
+    (patient.nom LIKE :search OR patient.prenom LIKE :search OR adresse LIKE :search OR code_postal
+    LIKE :search OR ville LIKE :search OR num_ss LIKE :search OR lieu_naissance LIKE :search)
+    union
+    SELECT patient.nom pnom, patient.prenom pprenom, patient.civilite pcivilite, date_naissance,
+    lieu_naissance, num_ss, adresse, code_postal, ville, null as mnom, null as mprenom, id_patient, null as id_medtraitant
+    FROM patient WHERE patient.id_medecin is null AND
     (patient.nom LIKE :search OR patient.prenom LIKE :search OR adresse LIKE :search OR code_postal
     LIKE :search OR ville LIKE :search OR num_ss LIKE :search OR lieu_naissance LIKE :search)");
     ?>
@@ -36,7 +42,7 @@
                 <td>".$data['adresse']."</td>
                 <td>".$data['code_postal']."</td>
                 <td>".$data['ville']."</td>
-                <td class=\"editcell\"><a href=\"profilpatient.php?id_patient=".$data['id_patient']."\">Modifier</a></td>
+                <td class=\"editcell\"><a href=\"profilpatient.php?id_patient=".$data['id_patient']."&id_medecin=".$data['id_medtraitant']."\">Modifier</a></td>
                 <td class=\"delcell\"><a href=\"patients.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
                 array_push($id_patients_deja_trouves, $data['id_patient']);
             }
