@@ -77,21 +77,38 @@ Fin si
 		</legend>
 		<form method="post">
 			<div class="textinputs">
-				Nom<input type="text" name="nom" value="<?php echo $data['pnom']; ?>"></input>
-				Prénom<input type="text" name="prenom" value="<?php echo $data['pprenom']; ?>"></input>
-				Civilité<input type="text" name="civilite" value="<?php echo $data['pcivilite']; ?>"></input>
-				Date de naissance<input type="date" name="date_naissance" value="<?php echo date('Y-d-m', $data['date_naissance']); ?>"></input>
-				Lieu de naissance<input type="text" name="lieu_naissance" value="<?php echo $data['lieu_naissance']; ?>"></input>
-				N° de sécurité sociale<input type="text" name="num_ss" value="<?php echo $data['num_ss']; ?>"></input>
+				Nom<input type="text" name="nom" value="<?php echo $data['pnom']; ?>" required></input>
+				Prénom<input type="text" name="prenom" value="<?php echo $data['pprenom']; ?>" required></input>
+				Civilité<input type="text" name="civilite" value="<?php echo $data['pcivilite']; ?>" required></input>
+				Date de naissance<input type="date" name="date_naissance" value="<?php echo date('Y-d-m', $data['date_naissance']); ?>" required></input>
+				Lieu de naissance<input type="text" name="lieu_naissance" value="<?php echo $data['lieu_naissance']; ?>" required></input>
+				<select name="medecin">
 				<?php
-				if(!empty($_GET['id_medecin'])) { ?>
-				Médecin traitant<input type="text" name="medecin" value="<?php echo $data['mnom']." ".$data['mprenom']; ?>"></input>
-				<?php } else { ?>
-				Médecin traitant<input type="text" name="medecin" value=""></input>
-				<?php } ?>
-				Adresse<input type="text" name="adresse" value="<?php echo $data['adresse']; ?>"></input>
-				Code postal<input type="text" name="code_postal" value="<?php echo $data['code_postal']; ?>"></input>
-				Ville<input type="text" name="ville" value="<?php echo $data['ville']; ?>"></input>
+					if(!empty($_GET['id_medecin'])) { ?>
+						<option value="<?php echo $_GET['id_medecin']; ?>">
+							<?php
+								echo $data['mnom']." ".$data['mprenom'];
+							?>
+						</option>
+					<?php } ?>
+						<option value="NULL">Aucun médecin traitant</option>
+						<?php
+						// Génération des options
+							// Connexion à la BD
+							require '../php/connexiondb.php';
+							//Préparation de la requête
+							$requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin where id_medecin <> :idmed");
+							// Execution de la requête
+							$requ->execute(array('idmed'=>$_GET['id_medecin']));
+							while($data2 = $requ->fetch()) {
+								echo "<option value=\"".$data2['id_medecin']."\">".$data2['nom']." ".$data2['prenom']."</option>";
+							}
+						?>
+				</select>
+				N° de sécurité sociale<input type="text" name="num_ss" value="<?php echo $data['num_ss']; ?>" required></input>
+				Adresse<input type="text" name="adresse" value="<?php echo $data['adresse']; ?>" required></input>
+				Code postal<input type="text" name="code_postal" value="<?php echo $data['code_postal']; ?>" required></input>
+				Ville<input type="text" name="ville" value="<?php echo $data['ville']; ?>" required></input>
 			</div>
 			<div class="submitinputs">
 				<input class="edit" type="submit" name="modifier" value="Modifier"></input> 

@@ -95,3 +95,18 @@ form {
 	width: 100%;
 	height: 580px;
 }
+
+select {
+	background: var(--bg-color);
+	font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+	color: white;
+	border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid hsl(214, 13%, 16%);
+    display: block;
+	width: 40%;
+	margin-top: 10px;
+}

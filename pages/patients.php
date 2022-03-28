@@ -45,15 +45,20 @@ if(isset($_GET["disconnect"])) {
 	require '../php/connexiondb.php';
 
 	 // Préparation de la requête
-	 $req = $linkpdo->prepare('INSERT INTO patient(civilite, nom, prenom, adresse, code_postal, ville, date_naissance, lieu_naissance, num_ss, id_medecin)
-	 VALUES(:vcivilite, :vnom, :vprenom, :vadresse, :vcode_postal, :vville, :vdate_naissance, :vlieu_naissance, :vnum_ss, :vid_medecin)');
-
+	 $req = $linkpdo->prepare("INSERT INTO patient(civilite, nom, prenom, adresse, code_postal, ville, date_naissance, lieu_naissance, num_ss, id_medecin)
+	 VALUES(:vcivilite, :vnom, :vprenom, :vadresse, :vcode_postal, :vville, :vdate_naissance, :vlieu_naissance, :vnum_ss, :vid_medecin)");
+	
+	if($_POST['medecin'] === "NULL") {
+		$med = null;
+	} else {
+		$med = $_POST['medecin'];
+	}
 	 // Exécution de la requête
 	 if($req->execute(array('vcivilite' => $_POST["civilite"], 'vnom' => $_POST['nom'], 'vprenom' => $_POST['prenom'], 'vadresse' => $_POST['adresse'], 'vcode_postal' => $_POST['code_postal'],
-	  'vville' => $_POST['ville'], 'vdate_naissance' => strtotime($_POST['date_naissance']), 'vlieu_naissance' => $_POST['lieu_naissance'], 'vnum_ss' => $_POST['num_ss'], 'vid_medecin' => $_POST['medecin'] ))){
+	  'vville' => $_POST['ville'], 'vdate_naissance' => strtotime($_POST['date_naissance']), 'vlieu_naissance' => $_POST['lieu_naissance'], 'vnum_ss' => $_POST['num_ss'], 'vid_medecin' => $med ))){
 							 echo "<p class=\"success\">Patient ajouté avec succès !</p>";
 						 } else {
-							 echo "<p class=\"error\">Erreur, données saisies non valide</p>";
+							 echo "<p class=\"error\">Erreur, données saisies non valides</p>";
 						 }
 
 	}
@@ -104,9 +109,22 @@ if(isset($_GET["disconnect"])) {
 					Prénom <input type="text" name="prenom" required></input>
 					Date de naissance <input type="date" name="date_naissance" required pattern="\d{4}-\d{2}-\d{2}"></input>
 					Lieu de naissance <input type="text" name="lieu_naissance" required></input>
-					<?php 
-						include "../php/selectMedecinTraitants.php";
-					?>
+					<select name="medecin">
+						<option value="NULL">Médecin traitant</option>
+						<option value="NULL">Aucun médecin traitant</option>
+						<?php
+						// Génération des options
+							// Connexion à la BD
+							require '../php/connexiondb.php';
+							//Préparation de la requête
+							$requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin");
+							// Execution de la requête
+							$requ->execute();
+							while($data2 = $requ->fetch()) {
+								echo "<option value=\"".$data2['id_medecin']."\">".$data2['nom']." ".$data2['prenom']."</option>";
+							}
+						?>
+					</select>
 					N° de sécurité sociale <input type="text" name="num_ss" required></input>
 					Adresse <input type="text" name="adresse" required></input>
 					Code postal <input type="text" name="code_postal" required></input>
