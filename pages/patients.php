@@ -13,6 +13,8 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,6 +39,25 @@ if(isset($_GET["disconnect"])) {
 		include "../php/header.php";
 	?>
 	<h1>Gestion des patients</h1>
+	<?php
+	// S'il y a un patient à ajouter
+	if(isset($_POST['ajouter'])) {
+	require '../php/connexiondb.php';
+
+	 // Préparation de la requête
+	 $req = $linkpdo->prepare('INSERT INTO patient(civilite, nom, prenom, adresse, code_postal, ville, date_naissance, lieu_naissance, num_ss, id_medecin)
+	 VALUES(:vcivilite, :vnom, :vprenom, :vadresse, :vcode_postal, :vville, :vdate_naissance, :vlieu_naissance, :vnum_ss, :vid_medecin)');
+
+	 // Exécution de la requête
+	 if($req->execute(array('vcivilite' => $_POST["civilite"], 'vnom' => $_POST['nom'], 'vprenom' => $_POST['prenom'], 'vadresse' => $_POST['adresse'], 'vcode_postal' => $_POST['code_postal'],
+	  'vville' => $_POST['ville'], 'vdate_naissance' => strtotime($_POST['date_naissance']), 'vlieu_naissance' => $_POST['lieu_naissance'], 'vnum_ss' => $_POST['num_ss'], 'vid_medecin' => $_POST['medecin'] ))){
+							 echo "<p class=\"success\">Patient ajouté avec succès !</p>";
+						 } else {
+							 echo "<p class=\"error\">Erreur, données saisies non valide</p>";
+						 }
+
+	}
+	?>
 
 	<?php	
 	// Si patient supprimé
@@ -74,22 +95,22 @@ if(isset($_GET["disconnect"])) {
 			<p id="invite">Cliquez pour ouvrir le formulaire d'ajout</p>
    		 	<form id="formAjouter" method="post">
 				<div class="textinputs">
-					<select name="civilite">
-						<option value="">Civilité</option>
+					<select name="civilite" required>
+						<option>Civilité</option>
 						<option value="Monsieur">Monsieur</option>
 						<option value="Madame">Madame</option>
 					</select>
-					Nom <input type="text" name="nom"></input>
-					Prénom <input type="text" name="prenom"></input>
-					Date de naissance <input type="text" name="date_naissance"></input>
-					Lieu de naissance <input type="text" name="lieu_naissance"></input>
+					Nom <input type="text" name="nom" required></input>
+					Prénom <input type="text" name="prenom" required></input>
+					Date de naissance <input type="date" name="date_naissance" required pattern="\d{4}-\d{2}-\d{2}"></input>
+					Lieu de naissance <input type="text" name="lieu_naissance" required></input>
 					<?php 
 						include "../php/selectMedecinTraitants.php";
 					?>
-					N° de sécurité sociale <input type="text" name="num_ss"></input>
-					Adresse <input type="text" name="adresse"></input>
-					Code postal <input type="text" name="code_postal"></input>
-					Ville <input type="text" name="ville"></input>
+					N° de sécurité sociale <input type="text" name="num_ss" required></input>
+					Adresse <input type="text" name="adresse" required></input>
+					Code postal <input type="text" name="code_postal" required></input>
+					Ville <input type="text" name="ville" required></input>
 				</div>
 				<div class="addbutton">
 					<input type="submit" name="ajouter" value="Ajouter"></input>
@@ -97,7 +118,6 @@ if(isset($_GET["disconnect"])) {
 			</form>
 		</fieldset>
 	</div>
-
 	<?php
 		if((isset($_POST['search']) && !empty($_POST['searchField'])) || !empty($_GET['save_search'])) {
 			echo "<div id=\"resultatsContainer\">";

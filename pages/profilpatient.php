@@ -45,6 +45,8 @@ Si id_patient via methode get alors
 Fin si
 */
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -78,7 +80,7 @@ Fin si
 				Nom<input type="text" name="nom" value="<?php echo $data['pnom']; ?>"></input>
 				Prénom<input type="text" name="prenom" value="<?php echo $data['pprenom']; ?>"></input>
 				Civilité<input type="text" name="civilite" value="<?php echo $data['pcivilite']; ?>"></input>
-				Date de naissance<input type="text" name="date_naissance" value="<?php echo $data['date_naissance']; ?>"></input>
+				Date de naissance<input type="date" name="date_naissance" value="<?php echo date('Y-d-m', $data['date_naissance']); ?>"></input>
 				Lieu de naissance<input type="text" name="lieu_naissance" value="<?php echo $data['lieu_naissance']; ?>"></input>
 				N° de sécurité sociale<input type="text" name="num_ss" value="<?php echo $data['num_ss']; ?>"></input>
 				<?php

@@ -31,7 +31,7 @@ legend {
 	line-height:50%;
 }
 
-input[type=text] {
+input[type=text], [type=date] {
 	background: var(--bg-color);
 	font-size: 1.2em;
     line-height: 1;
