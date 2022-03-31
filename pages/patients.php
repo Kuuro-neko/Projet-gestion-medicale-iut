@@ -78,6 +78,16 @@ if(isset($_GET["disconnect"])) {
 		}
 	}
 	?>
+	<?php	
+		// Si patient modifié
+		if(!empty($_GET['edit'])) {
+			if($_GET['edit'] === "success") {
+				echo "<p class=\"success\">Patient modifié avec succès !</p>";
+			} else {
+				echo "<p class=\"error\">Erreur lors de la modification</p>";
+			}
+		}
+	?>
 
 
 	<div class="formContainer">
@@ -94,14 +104,15 @@ if(isset($_GET["disconnect"])) {
 				<input type="submit" name="search" value="Rechercher">
 			</form>
 		</fieldset>
-		<!-- Lien vers le formulaire d'ajout -->
+
+		<!-- Formulaire d'ajout -->
 		<fieldset id="ajouter" tabindex="0">
 		<legend>Ajouter un patient</legend>
 			<p id="invite">Cliquez pour ouvrir le formulaire d'ajout</p>
    		 	<form id="formAjouter" method="post">
 				<div class="textinputs">
-					<select name="civilite" required>
-						<option>Civilité</option>
+					Civilité<select name="civilite" required>
+						<option value="">Civilité</option>
 						<option value="Monsieur">Monsieur</option>
 						<option value="Madame">Madame</option>
 					</select>
@@ -109,8 +120,8 @@ if(isset($_GET["disconnect"])) {
 					Prénom <input type="text" name="prenom" required></input>
 					Date de naissance <input type="date" name="date_naissance" required pattern="\d{4}-\d{2}-\d{2}"></input>
 					Lieu de naissance <input type="text" name="lieu_naissance" required></input>
-					<select name="medecin">
-						<option value="NULL">Médecin traitant</option>
+					Médecin traitant<select name="medecin" required>
+						<option value="">Médecin traitant</option>
 						<option value="NULL">Aucun médecin traitant</option>
 						<?php
 						// Génération des options
@@ -125,7 +136,7 @@ if(isset($_GET["disconnect"])) {
 							}
 						?>
 					</select>
-					N° de sécurité sociale <input type="text" name="num_ss" required></input>
+					N° de sécurité sociale <input type="text" name="num_ss" required minlength="15" maxlength="15"></input>
 					Adresse <input type="text" name="adresse" required></input>
 					Code postal <input type="text" name="code_postal" required></input>
 					Ville <input type="text" name="ville" required></input>

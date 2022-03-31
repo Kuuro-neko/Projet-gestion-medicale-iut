@@ -45,8 +45,6 @@ Si id_patient via methode get alors
 Fin si
 */
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -75,15 +73,31 @@ Fin si
 		<legend>
 			Modifier le patient
 		</legend>
-		<form method="post">
+		<form method="post" action="../php/modificationPatient.php">
 			<div class="textinputs">
+				Civilité<select name="civilite" required>
+					<?php 
+						if($data['pcivilite'] === "Monsieur") {
+							?>
+					<option value="Monsieur">Monsieur</option>
+					<option value="Madame">Madame</option>
+							<?php
+						} else {
+							?>
+					<option value="Madame">Madame</option>
+					<option value="Monsieur">Monsieur</option>
+							<?php
+						}
+					?>
+				</select>
 				Nom<input type="text" name="nom" value="<?php echo $data['pnom']; ?>" required></input>
 				Prénom<input type="text" name="prenom" value="<?php echo $data['pprenom']; ?>" required></input>
-				Civilité<input type="text" name="civilite" value="<?php echo $data['pcivilite']; ?>" required></input>
-				Date de naissance<input type="date" name="date_naissance" value="<?php echo date('Y-d-m', $data['date_naissance']); ?>" required></input>
+				Date de naissance<input type="date" name="date_naissance" value="<?php echo date('Y-m-d', $data['date_naissance']); ?>" required></input>
 				Lieu de naissance<input type="text" name="lieu_naissance" value="<?php echo $data['lieu_naissance']; ?>" required></input>
+				Médecin traitant
 				<select name="medecin">
-				<?php
+					<?php
+						// Option par défaut
 					if(!empty($_GET['id_medecin'])) { ?>
 						<option value="<?php echo $_GET['id_medecin']; ?>">
 							<?php
@@ -93,7 +107,7 @@ Fin si
 					<?php } ?>
 						<option value="NULL">Aucun médecin traitant</option>
 						<?php
-						// Génération des options
+						// Génération des autres options
 							// Connexion à la BD
 							require '../php/connexiondb.php';
 							//Préparation de la requête
@@ -103,7 +117,7 @@ Fin si
 							while($data2 = $requ->fetch()) {
 								echo "<option value=\"".$data2['id_medecin']."\">".$data2['nom']." ".$data2['prenom']."</option>";
 							}
-						?>
+					?>
 				</select>
 				N° de sécurité sociale<input type="text" name="num_ss" value="<?php echo $data['num_ss']; ?>" required></input>
 				Adresse<input type="text" name="adresse" value="<?php echo $data['adresse']; ?>" required></input>
@@ -114,7 +128,7 @@ Fin si
 				<input class="edit" type="submit" name="modifier" value="Modifier"></input> 
 				<input class="cancel" type="submit" name="annuler" value="Annuler"></input> 
 			</div>
-			<?php echo "<input type=\"hidden\" value=\"".$data['id_patient']."\" name=\"id_patient\"></input>"; ?>
+			<input type="hidden" value="<?php echo $data['id_patient']; ?>" name="id_patient"></input>"; 
 		</form>
 	</fieldset>
 	
