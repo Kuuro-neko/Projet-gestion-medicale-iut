@@ -95,12 +95,7 @@ if(isset($_GET["disconnect"])) {
 			<legend>Rechercher un patient</legend>
 		<!-- Formulaire de recherche -->
 			<form class="forms" method="post">
-				<input type="text" name="searchField">
-				<?php
-					if(isset($_POST['search']) && empty($_POST['searchField'])) {
-						echo "<p class=\"error\">Veuillez saisir au moins un mot-clé</p>";
-					}
-				?>
+				<input type="text" name="searchField" required>
 				<input type="submit" name="search" value="Rechercher">
 			</form>
 		</fieldset>

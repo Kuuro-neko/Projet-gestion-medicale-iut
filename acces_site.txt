@@ -1,0 +1,7 @@
+==== Accès au site  ====
+URL :
+Taille d'écran recommandée : 1920x1080 (Le site n'est pas responsive)
+
+===== Identifiants =====
+Login :
+Mot de passe :

@@ -5,4 +5,5 @@
     catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
+    $linkpdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
 ?>

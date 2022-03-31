@@ -72,3 +72,12 @@ input[type=submit]:hover {
 	color: red;
 	margin: 0px;
 }
+
+#welcome {
+	color: var(--turquoise-logo);
+	font-size: larger;
+}
+
+p {
+	color:beige;
+}

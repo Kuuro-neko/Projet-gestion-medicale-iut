@@ -9,7 +9,7 @@
 				</li>
 				<li><a href="medecins.php">Médecins</a>
 				</li>
-				<li><a href="rdv.php">Rendez-vous</a>
+				<li><a href="consultations.php">Consultations</a>
 				</li>
 				<li><a href="<?php echo $thisPage; ?>.php?disconnect=true">Se déconnecter</a>
 				</li>

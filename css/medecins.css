@@ -1,0 +1,208 @@
+input[type=submit] {
+	background: radial-gradient(var(--turquoise-logo),var(--bleu-logo));
+	font-size: 1.2em;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	padding: 0.5em 2em;
+	margin: 2em 0 0;
+	width: 100%;
+	border-radius: 3px;
+	opacity: 0.8;
+	transition: all 0.2s ease;
+}
+
+input[type=submit]:hover {
+	opacity: 1;
+}
+
+.formContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 90%;
+
+	
+}
+
+select {
+	background: var(--bg-color);
+	font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 1em 0;
+	color: white;
+	border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid hsl(214, 13%, 16%);
+    display: block;
+    width: 95%;
+	margin-top: 10px;
+}
+
+.forms {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	background-color: var(--fg-color);
+	min-height: 145px;
+}
+
+fieldset {
+	width: 100%;
+	margin: 5%;
+}
+
+form input {
+	min-width: 260px;
+}
+
+th,td {
+	color: white;
+}
+
+p {
+	color: white;
+}
+
+fieldset {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	color: rgb(136, 136, 136);
+	border-radius: 15px;
+	background-color: var(--fg-color);
+
+	margin: 1em auto;
+	padding: 2em;
+	width: 22em;
+	height: 11em;
+
+}
+
+#rechercher {
+	flex-direction: column;
+}
+
+legend {
+	font-weight: 70;
+    font-size: 1em;
+	color: white;
+    text-transform: uppercase;
+    padding: 5%;
+    background: var(--bg-color);
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    width: fit-content;
+	height: fit-content;
+    margin: auto;
+}
+#ajouter {
+	transition: height 0.2s ease-out;
+	flex-direction: row;
+	z-index: 2;
+	position: inherit;
+
+}
+
+#ajouter form {
+	display: none;
+}
+
+#ajouter #invite {
+	font-size: larger;
+}
+
+.addbutton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 300px;
+}
+
+#ajouter:focus-within {
+	height: 20em;
+	color: white;
+}
+
+#ajouter:focus-within > form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#ajouter:focus-within > #invite {
+	display: none;
+}
+
+.textinputs {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+
+	width: 100%;
+	height: auto;
+	
+	color: white;
+}
+
+input[type=text], [type=date] {
+	background: var(--bg-color);
+	font-size: 1.2em;
+    line-height: 1;
+    padding: 0.3em 0.4em;
+    margin: 0 0.5em 0.5em 0;
+	color: white;
+	border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid hsl(214, 13%, 16%);
+    display: block;
+    width: 90%;
+}
+
+#resultatsContainer {
+	display: flex;
+}
+
+.pair td, .impair td {
+	border: 2px solid hsl(214, 13%, 16%);
+	padding: 1px;
+	width: max-content;
+}
+
+.pair {
+	background-color: rgb(47, 88, 99);
+}
+
+.impair {
+	background-color: rgb(41, 72, 72);
+}
+
+.editcell {
+	border-radius: 8px;
+	background-color: green;
+	opacity: 0.7;
+}
+
+.delcell {
+	border-radius: 8px;
+	background-color: darkred;
+	opacity: 0.7;
+}
+
+.editcell:hover {
+	opacity: 1;
+}
+
+.delcell:hover {
+	opacity: 1;
+}
