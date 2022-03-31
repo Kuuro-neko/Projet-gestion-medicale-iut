@@ -102,8 +102,6 @@ legend {
     width: fit-content;
 	height: fit-content;
     margin: auto;
-	
-
 }
 #ajouter {
 	transition: height 0.4s ease-out;

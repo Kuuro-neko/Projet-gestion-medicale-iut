@@ -2,7 +2,6 @@
 		<img class="logo" src="../images/logo.png" alt="logo" height="55">
 		<nav class="menu">
 			<input type="checkbox" id="menuToggle">
-			<label for="menuToggle" class="menu-icon"><img src="../images/menu_icon.png" alt="Menu de navigation déroulant" height="60"></label>
 			<ul>
 				<li><a href="accueil.php">Accueil</a>
 				</li>

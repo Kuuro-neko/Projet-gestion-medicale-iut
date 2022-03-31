@@ -15,20 +15,18 @@ fieldset {
 }
 
 legend {
-	font-weight: 700;
+	font-weight: 70;
     font-size: 2em;
 	color: white;
     text-transform: uppercase;
-	letter-spacing: 0.12em;
-    padding: 5% 30% 5% 15%;
+    padding: 5%;
     background: var(--bg-color);
     border-width: 1px;
     border-style: solid;
     display: block;
-    width: 50%;
-    margin: 0 auto;
-
-	line-height:50%;
+    width: fit-content;
+	height: fit-content;
+    margin: auto;
 }
 
 input[type=text], [type=date] {
