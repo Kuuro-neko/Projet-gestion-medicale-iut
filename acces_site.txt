@@ -1,6 +1,6 @@
 ==== Accès au site  ====
 URL :
-Taille d'écran recommandée : 1920x1080 (Le site n'est pas responsive)
+Le site n'est pas responsive, taille d'écran recommandée : 1920x1080
 
 ===== Identifiants =====
 Login :

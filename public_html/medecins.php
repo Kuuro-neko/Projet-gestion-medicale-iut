@@ -50,7 +50,7 @@ if(isset($_GET["disconnect"])) {
 
 		// Exécution de la requête
 		if($req->execute(array('vcivilite' => $_POST["civilite"], 'vnom' => $_POST['nom'], 'vprenom' => $_POST['prenom']))){
-			echo "<p class=\"success\">Patient ajouté avec succès !</p>";
+			echo "<p class=\"success\">Médecin ajouté avec succès !</p>";
 		} else {
 			echo "<p class=\"error\">Erreur, données saisies non valides</p>";
 		}

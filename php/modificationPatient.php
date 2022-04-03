@@ -17,8 +17,8 @@
     'date_naissance'=>strtotime($_POST['date_naissance']), 'lieu_naissance'=>$_POST['lieu_naissance'],
     'id_medecin'=>$med, 'num_ss'=>$_POST['num_ss'],
     'adresse'=>$_POST['adresse'], 'code_postal'=>$_POST['code_postal'], 'ville'=>$_POST['ville'], 'id_patient'=>$_POST['id_patient']))) {
-       header("Location: ../pages/patients.php?edit=success");
+       header("Location: ../public_html/patients.php?edit=success");
     } else {
-       header("Location: ../pages/patients.php?edit=error");
+       header("Location: ../public_html/patients.php?edit=error");
     }
 ?>
