@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../php/config.php';
-include '../php/fonctions.php';
+require 'php/config.php';
+include 'php/fonctions.php';
 $thisPage = "medecins";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -25,24 +25,24 @@ if(isset($_GET["disconnect"])) {
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/common.css">
-	<link rel="stylesheet" type="text/css" href="../css/medecins.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/medecins.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
 
-	<link rel="icon" href="../images/logo.png" />
+	<link rel="icon" href="images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
 
 <body>
 	<?php
-		include "../php/header.php";
+		include "php/header.php";
 	?>
 	<h1>Gestion des medecins</h1>
 	<?php
 	// S'il y a un medecin à ajouter
 	if(isset($_POST['ajouter'])) {
-		require '../php/connexiondb.php';
+		require 'php/connexiondb.php';
 
 		// Préparation de la requête
 		$req = $linkpdo->prepare("INSERT INTO medecin(civilite, nom, prenom)
@@ -60,7 +60,7 @@ if(isset($_GET["disconnect"])) {
 	<?php	
 	// Si medecin supprimé
 	if(!empty($_GET['id_medecin'])) {
-		require '../php/connexiondb.php';
+		require 'php/connexiondb.php';
 
 		$req = $linkpdo->prepare("DELETE from medecin WHERE id_medecin = :id_suppr");
 
@@ -116,10 +116,10 @@ if(isset($_GET["disconnect"])) {
 	<?php
 		if((isset($_POST['search']) && !empty($_POST['searchField'])) || !empty($_GET['save_search'])) {
 			echo "<div id=\"resultatsContainer\">";
-			include '../php/rechercheMedecin.php';
+			include 'php/rechercheMedecin.php';
 			echo "</div>";
 		}
-		include "../php/footer.php";
+		include "php/footer.php";
 	?>
 </body>
 </html>

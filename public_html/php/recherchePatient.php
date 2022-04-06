@@ -1,6 +1,6 @@
 <?php
     // Connexion à la BD
-    require '../php/connexiondb.php';
+    require 'connexiondb.php';
 
     // Séparation des critères de recherche
     $motsRecherche = explode(" ", $_POST["searchField"]);

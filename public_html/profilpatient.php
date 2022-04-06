@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../php/config.php';
+require 'php/config.php';
 $thisPage = "profilpatient";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -14,7 +14,7 @@ if(isset($_GET["disconnect"])) {
 }
 // Si arrivée en cliquant depuis Modifier dans la liste des patients, préremplir le formulaire
 if(!empty($_GET['id_patient'])) {
-	require '../php/connexiondb.php';
+	require 'php/connexiondb.php';
 
 	if(!empty($_GET['id_medecin'])) {
 		$req = $linkpdo->prepare("SELECT patient.nom pnom, patient.prenom pprenom, patient.civilite pcivilite, date_naissance,
@@ -55,17 +55,17 @@ Fin si
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/common.css">
-	<link rel="stylesheet" type="text/css" href="../css/profilpatient.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="icon" href="../images/logo.png" />
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/profilpatient.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="icon" href="images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
 
 <body>
 	<?php
-		include "../php/header.php";
+		include "php/header.php";
 	?>
 	<h1>Profil de patient</h1>
 
@@ -73,7 +73,7 @@ Fin si
 		<legend>
 			Modifier le patient
 		</legend>
-		<form method="post" action="../php/modificationPatient.php">
+		<form method="post" action="php/modificationPatient.php">
 			<div class="textinputs">
 				Civilité<select name="civilite" required>
 					<?php 
@@ -109,7 +109,7 @@ Fin si
 						<?php
 						// Génération des autres options
 							// Connexion à la BD
-							require '../php/connexiondb.php';
+							require 'php/connexiondb.php';
 							//Préparation de la requête
 							$requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin where id_medecin <> :idmed");
 							// Execution de la requête
@@ -128,13 +128,13 @@ Fin si
 				<input class="edit" type="submit" name="modifier" value="Modifier"></input> 
 				<input class="cancel" type="submit" name="annuler" value="Annuler"></input> 
 			</div>
-			<input type="hidden" value="<?php echo $data['id_patient']; ?>" name="id_patient"></input>"; 
+			<input type="hidden" value="<?php echo $data['id_patient']; ?>" name="id_patient"></input>
 		</form>
 	</fieldset>
 	
 
 	<?php
-		include "../php/footer.php";
+		include "php/footer.php";
 	?>
 </body>
 </html>

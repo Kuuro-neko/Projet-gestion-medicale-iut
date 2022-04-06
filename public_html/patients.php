@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../php/config.php';
-include '../php/fonctions.php';
+require 'php/config.php';
+include 'php/fonctions.php';
 $thisPage = "patients";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -25,24 +25,24 @@ if(isset($_GET["disconnect"])) {
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/common.css">
-	<link rel="stylesheet" type="text/css" href="../css/patients.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/patients.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
 
-	<link rel="icon" href="../images/logo.png" />
+	<link rel="icon" href="images/logo.png" />
 	<title>Projet Gestion médicale</title>
 </head>
 
 <body>
 	<?php
-		include "../php/header.php";
+		include "php/header.php";
 	?>
 	<h1>Gestion des patients</h1>
 	<?php
 	// S'il y a un patient à ajouter
 	if(isset($_POST['ajouter'])) {
-	require '../php/connexiondb.php';
+	require 'php/connexiondb.php';
 
 	 // Préparation de la requête
 	 $req = $linkpdo->prepare("INSERT INTO patient(civilite, nom, prenom, adresse, code_postal, ville, date_naissance, lieu_naissance, num_ss, id_medecin)
@@ -67,7 +67,7 @@ if(isset($_GET["disconnect"])) {
 	<?php	
 	// Si patient supprimé
 	if(!empty($_GET['id_patient'])) {
-		require '../php/connexiondb.php';
+		require 'php/connexiondb.php';
 
 		$req = $linkpdo->prepare("DELETE from patient WHERE id_patient = :id_suppr");
 
@@ -121,7 +121,7 @@ if(isset($_GET["disconnect"])) {
 						<?php
 						// Génération des options
 							// Connexion à la BD
-							require '../php/connexiondb.php';
+							require 'php/connexiondb.php';
 							//Préparation de la requête
 							$requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin");
 							// Execution de la requête
@@ -145,10 +145,10 @@ if(isset($_GET["disconnect"])) {
 	<?php
 		if((isset($_POST['search']) && !empty($_POST['searchField'])) || !empty($_GET['save_search'])) {
 			echo "<div id=\"resultatsContainer\">";
-			include '../php/recherchePatient.php';
+			include 'php/recherchePatient.php';
 			echo "</div>";
 		}
-		include "../php/footer.php";
+		include "php/footer.php";
 	?>
 </body>
 </html>

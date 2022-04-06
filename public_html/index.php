@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../php/config.php';
+require 'php/config.php';
 $msgErreur = "";
 // Rediriger vers l'accueil authentifié si l'utilisateur est déjà connecté
 if(!empty($_SESSION['signedin'])) {
@@ -28,11 +28,11 @@ if(!empty($_POST['login']) && !empty($_POST['mdp']) && empty($_SESSION['signedin
 	<meta name="keywords" content="HTML, CSS, Gestion médicale, IUT Toulouse">
 	<meta name="author" content="Gonzalez Oropeza Gilles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../images/logo.png" />
-	<link rel="stylesheet" type="text/css" href="../css/common.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
+	<link rel="icon" href="images/logo.png" />
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<title>Projet Gestion médicale</title>
 </head>
 
@@ -51,7 +51,7 @@ if(!empty($_POST['login']) && !empty($_POST['mdp']) && empty($_SESSION['signedin
 		</fieldset>
 	</form>
 	<?php
-		include "../php/footer.php";
+		include "php/footer.php";
 	?>
 </body>
 </html>
