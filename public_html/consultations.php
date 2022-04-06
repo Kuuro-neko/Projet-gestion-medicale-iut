@@ -12,6 +12,12 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
+if(empty($_GET['week'])) {
+	$week = intval(date("W", time()));
+} else {
+	$week = $_GET['week'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,6 +42,48 @@ if(isset($_GET["disconnect"])) {
 	?>
 	<h1>Consultations</h1>
 	<p>En développement ! :)</p>
+	<div class="ajouterHorsCalendrier">
+		ajouter consultation hors calendrier
+	</div>
+	<div class="semaines">
+		<button class="semainrePrec" onclick="location.href='consultations.php?week=<?php echo $week - 1; ?>'" type="button">⇦ Semaine <?php echo $week - 1; ?></button>
+		<div id="centreSemaines">
+			<p id="dispSemaine">Semaine <?php echo $week; ?></p>
+			<?php if(!empty($_GET['week'])) {
+				if($_GET['week'] !==  intval(date("W", time()))) {
+			?> <button class="retourSemaineActuelle" onclick="location.href='consultations.php'" type="button">Retour semaine <?php echo intval(date("W", time())); ?></button> <?php
+				}
+			} ?>
+		</div>
+		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $week + 1; ?>'" type="button">Semaine <?php echo $week + 1; ?> ⇨</button>
+	</div>
+	<div class="consultations">
+		<div class="jour">
+			<p class="nomJour">Lundi</p>
+
+		</div>
+		<div class="jour">
+			<p class="nomJour">Mardi</p>
+
+		</div>
+		<div class="jour">
+			<p class="nomJour">Mercredi</p>
+
+		</div>
+		<div class="jour">
+			<p class="nomJour">Jeudi</p>
+
+		</div>
+		<div class="jour">
+			<p class="nomJour">Vendredi</p>
+
+		</div>
+		<div class="jour">
+			<p class="nomJour">Samedi</p>
+
+		</div>
+	</div>
+	<table>
 	<?php
 		include "php/footer.php";
 	?>

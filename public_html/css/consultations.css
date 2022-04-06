@@ -1,3 +1,42 @@
 p {
     color: beige;
 }
+
+.semaines {
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+    justify-content: space-between;
+}
+
+.consultations {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#centreSemaine {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#dispSemaine {
+    text-align: center;
+}
+
+.jour {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--fg-color);
+    margin-top: 5px;
+    padding: 2px;
+    width: 16%;
+    height: 800px;
+}
