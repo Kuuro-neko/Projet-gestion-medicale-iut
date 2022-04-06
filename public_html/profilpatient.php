@@ -12,7 +12,7 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
-// Si arrivée en cliquant depuis Modifier dans la liste des patients, préremplir le formulaire
+// Récupérer les variables pour préremplir du formulaire
 if(!empty($_GET['id_patient'])) {
 	require 'php/connexiondb.php';
 
@@ -31,20 +31,6 @@ if(!empty($_GET['id_patient'])) {
 	$data = $req->fetch();
 	
 }
-
-// Si annuler, retour page patients
-if(isset($_POST['annuler'])) {
-	header("Location: patients.php");
-}
-
-// TO DO MODIFICATION DE PATIENT
-/*
-Si id_patient via methode get alors
-	requete de modification
-	redirection vers patient.php
-Fin si
-*/
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -126,7 +112,7 @@ Fin si
 			</div>
 			<div class="submitinputs">
 				<input class="edit" type="submit" name="modifier" value="Modifier"></input> 
-				<input class="cancel" type="submit" name="annuler" value="Annuler"></input> 
+				<button class="cancel" onclick="location.href='patients.php'" type="button">Annuler</button>
 			</div>
 			<input type="hidden" value="<?php echo $data['id_patient']; ?>" name="id_patient"></input>
 		</form>
