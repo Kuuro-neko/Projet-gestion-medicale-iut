@@ -91,14 +91,14 @@ if(isset($_GET["disconnect"])) {
                         
                         <fieldset class="time">
                         <legend class="timelegend">Heure de début</legend>
-                            Heures <input type="number" name="debutheure" value="0" min="0" max="24" required></input>
+                            Heures <input type="number" name="debutheure" value="7" min="7" max="23" required></input>
                             Minutes <input type="number" name="debutmin" value="0" min="0" max="59" required></input>
                         </fieldset>
                         
                         <fieldset class="time">
                         <legend class="timelegend">Durée</legend>
-                            Heures <input type="number" name="dureeheure" value="0" min="0" max="10" required></input>
-                            Minutes <input type="number" name="dureemin" value="0" min="0" max="59" required></input>
+                            Heures <input type="number" name="dureeheure" value="" min="0" max="10" required></input>
+                            Minutes <input type="number" name="dureemin" value="" min="0" max="59" required></input>
                         </fieldset>
 
                     </div>

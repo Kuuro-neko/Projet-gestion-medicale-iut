@@ -17,6 +17,7 @@ p {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 60px;
+    min-height: 600px;
 }
 
 #centreSemaine {
@@ -48,4 +49,24 @@ p {
 
 .jourDroite {
     border-radius: 0px 20px 20px 0px;
+}
+
+.consultation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.771);
+    border-radius: 10px;
+}
+
+.btConsultation {
+    display: flex;
+    flex-direction: row;
+}
+
+.consultation p {
+    margin: 2px;
 }

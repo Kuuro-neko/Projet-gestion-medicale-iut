@@ -97,9 +97,12 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 	?>
 	<h1>Consultations</h1>
 	<?php
+	// après ajout d'une consultation
 	if(!empty($_GET['edit'])) {
 		if($_GET['edit'] === "success") {
-			echo "<p class=\"success\">Médecin modifié avec succès !</p>";
+			echo "<p class=\"success\">Consultation créée avec succès !</p>";
+		} elseif($_GET['edit'] === "errorDimanche") {
+			echo "<p class=\"error\">Erreur, le cabinet est fermé le dimanche</p>";
 		} else {
 			echo "<p class=\"error\">Erreur lors de la modification</p>";
 		}
@@ -119,7 +122,12 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		</div>
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>
 	</div>
-	<?php require "php/connexiondb.php"; ?>
+	<?php require "php/connexiondb.php"; 
+		$req = $linkpdo->prepare('SELECT patient.nom as pnom, substr(patient.prenom,1,1) as pprenom, medecin.nom as mnom, substr(medecin.prenom,1,1) as mprenom, dateheure, duree FROM patient, medecin, rendezvous
+		WHERE rendezvous.id_medecin = medecin.id_medecin AND rendezvous.id_patient = patient.id_patient AND dateheure > :debutintervalle AND dateheure < :finintervalle ORDER BY dateheure');
+	
+	?>
+	
 
 	<div class="consultations">
 		<?php
@@ -130,7 +138,28 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 			} elseif ($i == 5) {
 				$position = " jourDroite";
 			}
-			echo "<div class=\"jour".$position."\"><p class=\"nomJour\">".ucfirst(strftime("%A%e %B", $currentWeek[$i]))."</p></div>";
+			echo "<div class=\"jour".$position."\"><p class=\"nomJour\">".ucfirst(strftime("%A %e %B", $currentWeek[$i]))."</p>";
+			
+			$debutintervalle = $currentWeek[$i];
+			$finintervalle = $currentWeek[$i + 1];
+
+			$req->execute(array('debutintervalle'=>$debutintervalle,'finintervalle'=>$finintervalle));
+			while($data = $req->fetch()) {
+				?>
+				<div class="consultation">
+					<p class="heure">Heure : <?php echo date("h:i", $data['dateheure']); ?></p>
+					<p class="duree">Durée : <?php echo date("h:i", $data['duree']); ?></p>
+					<p class="patient">Patient : <?php echo $data['pnom']." ".$data['pprenom']."."; ?></p>
+					<p class="medecin">Médecin : <?php echo $data['mnom']." ".$data['mprenom']."."; ?></p>
+					<div class="btConsultation">
+						<button class="editConsultation" onclick="location.href='modifconsultation.php'" type="button">Modifier</button>
+						<button class="deleteConsultation" onclick="location.href='consultation.php'" type="button">Modifier</button>
+					</div>
+				</div>
+				<?php
+			}
+
+			echo "</div>";
 		}
 		?>
 	</div>
