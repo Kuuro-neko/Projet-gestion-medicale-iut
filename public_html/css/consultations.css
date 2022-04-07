@@ -16,6 +16,7 @@ p {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 60px;
 }
 
 #centreSemaine {
@@ -39,4 +40,12 @@ p {
     padding: 2px;
     width: 16%;
     height: 800px;
+}
+
+.jourGauche {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.jourDroite {
+    border-radius: 0px 20px 20px 0px;
 }
