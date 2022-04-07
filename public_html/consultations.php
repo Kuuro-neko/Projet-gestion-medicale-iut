@@ -96,6 +96,15 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		include "php/header.php";
 	?>
 	<h1>Consultations</h1>
+	<?php
+	if(!empty($_GET['edit'])) {
+		if($_GET['edit'] === "success") {
+			echo "<p class=\"success\">Médecin modifié avec succès !</p>";
+		} else {
+			echo "<p class=\"error\">Erreur lors de la modification</p>";
+		}
+	}
+	?>
 	<div class="ajouterHorsCalendrier">
 		<button class="retourSemaineActuelle" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
 	</div>

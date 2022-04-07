@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'php/config.php';
-include 'php/fonctions.php';
 $thisPage = "patients";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté

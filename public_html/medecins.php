@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'php/config.php';
-include 'php/fonctions.php';
 $thisPage = "medecins";
 
 // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -72,14 +71,14 @@ if(isset($_GET["disconnect"])) {
 	}
 	?>
 	<?php	
-		// Si médecin modifié
-		if(!empty($_GET['edit'])) {
-			if($_GET['edit'] === "success") {
-				echo "<p class=\"success\">Médecin modifié avec succès !</p>";
-			} else {
-				echo "<p class=\"error\">Erreur lors de la modification</p>";
-			}
+	// Si médecin modifié
+	if(!empty($_GET['edit'])) {
+		if($_GET['edit'] === "success") {
+			echo "<p class=\"success\">Médecin modifié avec succès !</p>";
+		} else {
+			echo "<p class=\"error\">Erreur lors de la modification</p>";
 		}
+	}
 	?>
 
 
