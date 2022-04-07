@@ -1,7 +1,14 @@
 ==== Accès au site  ====
-URL :
+
+URL : https://projetgestionmedicale.000webhostapp.com/index.php
+
 Le site n'est pas responsive, taille d'écran recommandée : 1920x1080
 
+
+
 ===== Identifiants =====
+
 Login :
+
 Mot de passe :
+

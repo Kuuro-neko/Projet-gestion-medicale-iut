@@ -117,12 +117,12 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		<button class="retourSemaineActuelle" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
 	</div>
 	<div class="semaines">
-		<button class="semainrePrec" onclick="location.href='consultations.php?week=<?php echo $prevWeek.'&year='.$prevYear; ?>'" type="button">⇦ Semaine <?php echo $prevWeek; ?></button>
+		<button class="semainePrec" onclick="location.href='consultations.php?week=<?php echo $prevWeek.'&year='.$prevYear; ?>'" type="button">⇦ Semaine <?php echo $prevWeek; ?></button>
 		<div id="centreSemaines">
 			<p id="dispSemaine">Année <?php echo $_SESSION['year']; ?> Semaine <?php echo $_SESSION['week']; ?></p>
 			<?php
-				if($_SESSION['week'] !==  intval(date("W", time()))) {
-			?> <button class="retourSemaineActuelle" onclick="location.href='consultations.php'" type="button">Retour semaine courante</button> <?php
+				if($_SESSION['week'] !=  intval(date("W", time()))) {
+			?> <a id="reset" href='consultations.php'>Retour semaine courante</a> <?php
 				} ?>
 		</div>
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>
@@ -145,8 +145,8 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 			}
 			echo "<div class=\"jour".$position."\"><p class=\"nomJour\">".ucfirst(strftime("%A %e %B", $currentWeek[$i]))."</p>";
 			
-			$debutintervalle = $currentWeek[$i];
-			$finintervalle = $currentWeek[$i + 1];
+			$debutintervalle = $currentWeek[$i] - 86400;
+			$finintervalle = $currentWeek[$i];
 
 			$req->execute(array('debutintervalle'=>$debutintervalle,'finintervalle'=>$finintervalle));
 			while($data = $req->fetch()) {

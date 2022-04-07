@@ -23,12 +23,50 @@ p {
 #centreSemaine {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 #dispSemaine {
+    font-size: larger;
     text-align: center;
+}
+
+.semainePrec, .semaineSuiv {
+	background: radial-gradient(rgba(255, 255, 255, 0.771),rgba(86, 86, 86, 0.771));
+
+    font-weight: bolder;
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	padding: 0.5em 2em;
+	margin: 2em 0 0;
+
+
+	opacity: 0.8;
+	transition: all 0.2s ease;
+}
+
+#reset {
+    color: aliceblue;
+    transition: all 0.2s ease;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+#reset:hover {
+    color: var(--turquoise-logo);
+}
+
+.semainePrec:hover, .semaineSuiv:hover {
+    background: radial-gradient(rgb(60, 187, 149),rgb(117, 179, 152));
+	opacity: 1;
+}
+
+.semainePrec {
+    border-radius: 40px 3px 3px 0px;
+}
+
+.semaineSuiv {
+    border-radius: 3px 40px 0px 3px;
 }
 
 .jour {
@@ -41,14 +79,27 @@ p {
     padding: 2px;
     width: 16%;
     height: 800px;
+    border-top: 2px solid rgba(255, 255, 255, 0.771);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.771);
 }
 
 .jourGauche {
     border-radius: 20px 0px 0px 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.771);
 }
 
 .jourDroite {
     border-radius: 0px 20px 20px 0px;
+    border-right: 2px solid rgba(255, 255, 255, 0.771);
+}
+
+.nomJour {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.771);
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    color: var(--turquoise-logo);
 }
 
 .consultation {
@@ -60,6 +111,7 @@ p {
     padding: 5px;
     border: 2px solid rgba(255, 255, 255, 0.771);
     border-radius: 10px;
+    background-color: rgb(54, 57, 62);
 }
 
 .btConsultation {
@@ -69,6 +121,7 @@ p {
 
 .consultation p {
     margin: 2px;
+    
 }
 
 input[type=submit], .delete {
