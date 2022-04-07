@@ -152,8 +152,8 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 			while($data = $req->fetch()) {
 				?>
 				<div class="consultation">
-					<p class="heure">Heure : <?php echo date("h:i", $data['dateheure']); ?></p>
-					<p class="duree">Durée : <?php echo date("h:i", $data['duree']); ?></p>
+					<p class="heure">Heure : <?php echo date("H:i", $data['dateheure']); ?></p>
+					<p class="duree">Durée : <?php echo date("H:i", $data['duree']); ?></p>
 					<p class="patient">Patient : <?php echo $data['pnom']." ".$data['pprenom']."."; ?></p>
 					<p class="medecin">Médecin : <?php echo $data['mnom']." ".$data['mprenom']."."; ?></p>
 					<div class="btConsultation">

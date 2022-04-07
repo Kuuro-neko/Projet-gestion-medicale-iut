@@ -86,7 +86,7 @@ if(isset($_GET["disconnect"])) {
                     $placeholder ="";
                 }
                 ?>
-                    Date <input type="date" name="date"<?php echo $placeholder;?>> required></input>
+                    Date <input type="date" name="date"<?php echo $placeholder;?> required></input>
                     <div class="heures">
                         
                         <fieldset class="time">
