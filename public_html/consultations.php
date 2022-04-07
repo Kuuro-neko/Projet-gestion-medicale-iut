@@ -15,6 +15,12 @@ if(isset($_GET["disconnect"])) {
 }
 
 
+// Si consultation à supprimer
+if(isset($_POST['delete'])) {
+	require "php/connexiondb.php";
+	$delete = $linkpdo->prepare('DELETE FROM rendezvous WHERE id_medecin = :id_medecin AND dateheure = :dateheure');
+	$delete->execute(array('id_medecin'=>$_POST['id_medecin'], 'dateheure'=>$_POST['dateheure']));
+}
 
 // Retourne le nombre de semaines (int) d'une année (int)
 function getWeeksInYear($year) {
@@ -38,7 +44,6 @@ function daysInWeek($yearNum, $weekNum)
     }
     return $result;
 }
-
 
 
 // Affecter les valeurs à l'année et semaine affichée sur la page
@@ -123,7 +128,7 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>
 	</div>
 	<?php require "php/connexiondb.php"; 
-		$req = $linkpdo->prepare('SELECT patient.nom as pnom, substr(patient.prenom,1,1) as pprenom, medecin.nom as mnom, substr(medecin.prenom,1,1) as mprenom, dateheure, duree FROM patient, medecin, rendezvous
+		$req = $linkpdo->prepare('SELECT patient.nom as pnom, substr(patient.prenom,1,1) as pprenom, medecin.nom as mnom, substr(medecin.prenom,1,1) as mprenom, dateheure, duree, rendezvous.id_medecin as rdv_id_med FROM patient, medecin, rendezvous
 		WHERE rendezvous.id_medecin = medecin.id_medecin AND rendezvous.id_patient = patient.id_patient AND dateheure > :debutintervalle AND dateheure < :finintervalle ORDER BY dateheure');
 	
 	?>
@@ -152,8 +157,16 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 					<p class="patient">Patient : <?php echo $data['pnom']." ".$data['pprenom']."."; ?></p>
 					<p class="medecin">Médecin : <?php echo $data['mnom']." ".$data['mprenom']."."; ?></p>
 					<div class="btConsultation">
-						<button class="editConsultation" onclick="location.href='modifconsultation.php'" type="button">Modifier</button>
-						<button class="deleteConsultation" onclick="location.href='consultation.php'" type="button">Modifier</button>
+						<form action="modifconsultation.php" method="post">
+							<input class="edit" type="submit" name="edit" value="Modifier"></input>
+							<input type="hidden" name="dateheure" value="<?php echo $data['dateheure']; ?>">
+							<input type="hidden" name="id_medecin" value="<?php echo $data['rdv_id_med']; ?>">
+						</form>
+						<form method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette consultation ?');">
+							<input class="delete" type="submit" name="delete" value="Supprimer"></input>
+							<input type="hidden" name="dateheure" value="<?php echo $data['dateheure']; ?>">
+							<input type="hidden" name="id_medecin" value="<?php echo $data['rdv_id_med']; ?>">
+						</form>
 					</div>
 				</div>
 				<?php

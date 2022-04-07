@@ -43,7 +43,7 @@
                 <td>".$data['code_postal']."</td>
                 <td>".$data['ville']."</td>
                 <td class=\"editcell\"><a href=\"profilpatient.php?id_patient=".$data['id_patient']."&id_medecin=".$data['id_medtraitant']."\">Modifier</a></td>
-                <td class=\"delcell\"><a href=\"patients.php?id_patient=".$data['id_patient']."\">Supprimer</a></td></tr>";
+                <td class=\"delcell\"><a href=\"patients.php?id_patient=".$data['id_patient']."\" onclick=\"return confirm('Voulez-vous vraiment supprimer ce patient ?')\";>Supprimer</a></td></tr>";
                 array_push($id_patients_deja_trouves, $data['id_patient']);
             }
         }

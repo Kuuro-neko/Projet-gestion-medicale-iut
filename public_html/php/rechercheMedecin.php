@@ -26,7 +26,7 @@
                 <td>".$data['nom']."</td>
                 <td>".$data['prenom']."</td>
                 <td class=\"editcell\"><a href=\"profilmedecin.php?id_medecin=".$data['id_medecin']."\">Modifier</a></td>
-                <td class=\"delcell\"><a href=\"medecins.php?id_medecin=".$data['id_medecin']."\">Supprimer</a></td></tr>";
+                <td class=\"delcell\"><a href=\"medecins.php?id_medecin=".$data['id_medecin']."\" onclick=\"return confirm('Voulez-vous vraiment supprimer ce médecin ?');\">Supprimer</a></td></tr>";
                 array_push($id_medecins_deja_trouves, $data['id_medecin']);
             }
         }
