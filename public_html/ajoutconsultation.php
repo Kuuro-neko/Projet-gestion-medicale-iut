@@ -136,7 +136,7 @@ if(isset($_GET["disconnect"])) {
                     <input type="submit" name="ajouter" value="Ajouter"></input>
                     <button class="cancel" onclick="location.href='ajoutconsultation.php'" type="button">Annuler</button>
                 </div>
-
+                <input type="hidden" value="<?php echo $_GET['id_patient']; ?>" name="id_patient"></input>
             </form>
         </fieldset>
 

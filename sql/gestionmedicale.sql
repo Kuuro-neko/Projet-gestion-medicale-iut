@@ -206,12 +206,12 @@ INSERT INTO `patient` (`id_patient`, `nom`, `prenom`, `civilite`, `adresse`, `co
 
 DROP TABLE IF EXISTS `rendezvous`;
 CREATE TABLE IF NOT EXISTS `rendezvous` (
-  `id_medecin` int(11) NOT NULL,
+  `id_medecin` bigint(20) NOT NULL,
   `dateheure` datetime NOT NULL,
   `duree` time DEFAULT NULL,
-  `id_patient` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Medecin`,`DateHeure`),
-  KEY `Id_Patient` (`Id_Patient`)
+  `id_patient` bigint(20) NOT NULL,
+  PRIMARY KEY (`id_medecin`,`dateheure`),
+  KEY `Id_Patient` (`id_patient`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
 
