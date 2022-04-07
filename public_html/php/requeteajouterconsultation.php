@@ -22,7 +22,9 @@
 
     if($reqEdit->execute(array('id_medecin'=>$_POST['medecin'], 'id_patient'=>$_POST['id_patient'], 'dateheure'=>$dateheure,'duree'=>$duree))) {
        //header("Location: ../consultations.php?edit=success");
+       echo "oui";
     } else {
        //header("Location: ../consultations.php?edit=error");
+       echo "non";
     }
 ?>
