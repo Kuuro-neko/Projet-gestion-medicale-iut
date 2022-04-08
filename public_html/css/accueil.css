@@ -81,3 +81,7 @@ input[type=submit]:hover {
 p {
 	color:beige;
 }
+
+td, tr, th, h2 {
+	color: white;
+}

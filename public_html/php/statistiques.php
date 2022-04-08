@@ -22,12 +22,13 @@
     $data_sup_50_M = $req_sup50->fetch();
     $req_sup50->execute(array('civilite'=>'Madame','date_50y'=>$date_50y));
     $data_sup_50_F = $req_sup50->fetch();
+
+
+
+
 ?>
 <h2>Répartition des patients selon leur sexe et leur âge</h2>
 <table>
-    <tr>
-        <th colspan="3">Répartition des patients selon leur sexe et leur âge</th>
-    </tr>
     <tr>
         <th>Tranche d'âge</th><th>Nb Hommes</th><th>Nb Femmes</th>
     </tr>
@@ -40,4 +41,18 @@
     <tr>
         <td>Plus de 50 ans</td><?php echo "<td>".$data_sup_50_M['nb']."</td><td>".$data_sup_50_F['nb']."</td>"; ?>
     </tr>
+</table>
+
+<h2>Heures de rdv par médecin</h2>
+<table>
+    <tr>
+        <th>Nom médecin</th><th>Durée totale des consultations</th>
+    </tr>
+    <?php
+        $req = $linkpdo->prepare('SELECT sum(duree) as duree, nom, prenom FROM rendezvous, medecin WHERE rendezvous.id_medecin = medecin.id_medecin GROUP BY rendezvous.id_medecin');
+        $req->execute();
+        while($data = $req->fetch()) {
+            echo "<tr><td>".$data['nom']." ".$data['prenom']."</td><td>".($data['duree']/3600)." Heures</td></tr>";
+        }
+    ?>
 </table>
