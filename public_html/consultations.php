@@ -128,7 +128,8 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>
 	</div>
 	<?php require "php/connexiondb.php"; 
-		$req = $linkpdo->prepare('SELECT patient.nom as pnom, substr(patient.prenom,1,1) as pprenom, medecin.nom as mnom, substr(medecin.prenom,1,1) as mprenom, dateheure, duree, rendezvous.id_medecin as rdv_id_med FROM patient, medecin, rendezvous
+		$req = $linkpdo->prepare('SELECT patient.nom as pnom, substr(patient.prenom,1,1) as pprenom, medecin.nom as mnom, substr(medecin.prenom,1,1) as mprenom, dateheure, duree,
+		 rendezvous.id_medecin as rdv_id_med, rendezvous.id_patient as rdv_id_pat FROM patient, medecin, rendezvous
 		WHERE rendezvous.id_medecin = medecin.id_medecin AND rendezvous.id_patient = patient.id_patient AND dateheure > :debutintervalle AND dateheure < :finintervalle ORDER BY dateheure');
 	
 	?>
@@ -158,10 +159,11 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 					<p class="patient">Patient : <?php echo $data['pnom']." ".$data['pprenom']."."; ?></p>
 					<p class="medecin">Médecin : <?php echo $data['mnom']." ".$data['mprenom']."."; ?></p>
 					<div class="btConsultation">
-						<form action="modifconsultation.php" method="post">
+						<form action="ajoutconsultation.php" method="get">
 							<input class="edit" type="submit" name="edit" value="Modifier"></input>
-							<input type="hidden" name="dateheure" value="<?php echo $data['dateheure']; ?>">
-							<input type="hidden" name="id_medecin" value="<?php echo $data['rdv_id_med']; ?>">
+							<input type="hidden" name="date" value="<?php echo $data['dateheure']; ?>">
+							<input type="hidden" name="duree" value="<?php echo $data['duree']; ?>">
+							<input type="hidden" name="id_patient" value="<?php echo $data['rdv_id_pat']; ?>">
 						</form>
 						<form method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette consultation ?');">
 							<input class="delete" type="submit" name="delete" value="Supprimer"></input>
