@@ -99,7 +99,7 @@ if(isset($_GET["disconnect"])) {
                     $dureeMinValue = date('i', $_GET['duree']);
                 } else {
                     $dureeHeureValue = "0";
-                    $dureeMinValue = "";
+                    $dureeMinValue = "30";
                 }
                 ?>
                     Date <input type="date" name="date"<?php echo $dateValue;?> required></input>
