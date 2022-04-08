@@ -85,20 +85,36 @@ if(isset($_GET["disconnect"])) {
                 } else {
                     $dateValue ="";
                 }
+
+                if(!empty($_GET['date'])) {
+                    $debutHeureValue = strftime('%H', $_GET['date']);
+                    $debutMinValue = date('i', $_GET['date']);
+                } else {
+                    $debutHeureValue = "7";
+                    $debutMinValue = "0";
+                }
+
+                if(!empty($_GET['duree'])) {
+                    $dureeHeureValue = strftime('%H', $_GET['duree']);
+                    $dureeMinValue = date('i', $_GET['duree']);
+                } else {
+                    $dureeHeureValue = "0";
+                    $dureeMinValue = "";
+                }
                 ?>
                     Date <input type="date" name="date"<?php echo $dateValue;?> required></input>
                     <div class="heures">
                         
                         <fieldset class="time">
                         <legend class="timelegend">Heure de début</legend>
-                            Heures <input type="number" name="debutheure" value="7" min="7" max="23" required></input>
-                            Minutes <input type="number" name="debutmin" value="0" min="0" max="59" required></input>
+                            Heures <input type="number" name="debutheure" value="<?php echo $debutHeureValue; ?>" min="7" max="23" required></input>
+                            Minutes <input type="number" name="debutmin" value="<?php echo $debutMinValue; ?>" min="0" max="59" required></input>
                         </fieldset>
                         
                         <fieldset class="time">
                         <legend class="timelegend">Durée</legend>
-                            Heures <input type="number" name="dureeheure" value="" min="0" max="10" required></input>
-                            Minutes <input type="number" name="dureemin" value="" min="0" max="59" required></input>
+                            Heures <input type="number" name="dureeheure" value="<?php echo $dureeHeureValue; ?>" min="0" max="10" required></input>
+                            Minutes <input type="number" name="dureemin" value="<?php echo $dureeMinValue; ?>" min="0" max="59" required></input>
                         </fieldset>
 
                     </div>

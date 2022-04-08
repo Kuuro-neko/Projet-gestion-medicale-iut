@@ -14,21 +14,21 @@
     // Verif dat eet heure nouveau rdv
     $req = $linkpdo->prepare('SELECT dateheure, duree FROM rendezvous WHERE id_medecin = :id_medecin');
     $req->execute(array('id_medecin'=>$_POST['medecin']));
-    $creaneauValide = true;
+    $creneauValide = true;
     while($data = $req->fetch()) {
       var_dump($dateheure);
       var_dump($data['dateheure']);
       if($data['dateheure'] + 0 < $dateheure && $data['dateheure'] + $data['duree'] > $dateheure) {
-        header("Location: ../consultations.php?edit=errorDateDebut");
-        $creaneauValide = false;
+        header("Location: ../ajoutconsultation.php?date=".$dateheure."&duree=".$duree."&id_patient=".$_POST['id_patient']);
+        $creneauValide = false;
       }
       if($data['dateheure'] + 0 < $dateheure + $duree && $data['dateheure'] + $data['duree'] > $dateheure + $duree ) {
-        header("Location: ../consultations.php?edit=errorDateFin");
-        $creaneauValide = false;
+        header("Location: ../ajoutconsultation.php?date=".$dateheure."&duree=".$duree."&id_patient=".$_POST['id_patient']);
+        $creneauValide = false;
       }
       if($data['dateheure'] + 0 > $dateheure && $data['dateheure'] + $data['duree'] < $dateheure + $duree ) {
-        header("Location: ../consultations.php?edit=errorDateInclude");
-        $creaneauValide = false;
+        header("Location: ../ajoutconsultation.php?date=".$dateheure."&duree=".$duree."&id_patient=".$_POST['id_patient']);
+        $creneauValide = false;
       }
     }
 
