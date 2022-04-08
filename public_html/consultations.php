@@ -145,8 +145,9 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 			}
 			echo "<div class=\"jour".$position."\"><p class=\"nomJour\">".ucfirst(strftime("%A %e %B", $currentWeek[$i]))."</p>";
 			
-			$debutintervalle = $currentWeek[$i] - 86400;
-			$finintervalle = $currentWeek[$i];
+			// les DateTime se positionnent sur un jour à midi, on fait +/- 43200 (12 heures en secondes)
+			$debutintervalle = $currentWeek[$i] - 43200;
+			$finintervalle = $currentWeek[$i] + 43200;
 
 			$req->execute(array('debutintervalle'=>$debutintervalle,'finintervalle'=>$finintervalle));
 			while($data = $req->fetch()) {
