@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `medecin` (
 -- Déchargement des données de la table `medecin`
 --
 
-INSERT INTO `medecin` (`id_medecin`, `nom`, `prenom`, `civilite`) VALUES
+INSERT INTO `medecin` (`id_medecin`, `prenom`, `nom`, `civilite`) VALUES
 (1, 'Léa', 'Chauveau', 'Madame'),
 (2, 'Romy', 'Blanc', 'Monsieur'),
 (3, 'Martin', 'Guillon', 'Monsieur'),
