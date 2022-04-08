@@ -208,11 +208,28 @@ DROP TABLE IF EXISTS `rendezvous`;
 CREATE TABLE IF NOT EXISTS `rendezvous` (
   `id_medecin` int(11) NOT NULL,
   `dateheure` bigint(20) NOT NULL,
-  `duree` bigint(20) DEFAULT 0,
+  `duree` bigint(20) DEFAULT '0',
   `id_patient` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Medecin`,`DateHeure`),
-  KEY `Id_Patient` (`Id_Patient`)
+  PRIMARY KEY (`id_medecin`,`dateheure`),
+  KEY `Id_Patient` (`id_patient`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `rendezvous`
+--
+
+INSERT INTO `rendezvous` (`id_medecin`, `dateheure`, `duree`, `id_patient`) VALUES
+(9, 1649505600, 1800, 62),
+(4, 1649865600, 900, 52),
+(9, 1649512800, 1800, 62),
+(7, 1650533400, 1800, 94),
+(3, 1651251600, 1800, 67),
+(15, 1650963600, 1800, 2),
+(13, 1649401200, 1800, 43),
+(7, 1649934000, 1800, 11),
+(8, 1649160000, 900, 91),
+(18, 1649953800, 1800, 34),
+(9, 1650898800, 1800, 102);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
