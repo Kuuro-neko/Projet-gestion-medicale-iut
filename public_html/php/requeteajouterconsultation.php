@@ -8,10 +8,7 @@
     }
     $duree = $_POST['dureemin'] * 60 + $_POST['dureeheure'] * 3600;
 
-    $reqVerif = $linkpdo->prepare("SELECT * FROM rendezvous
-    WHERE NOT((:datedebut < dateheure OR :datedebut >= (dateheure + duree))
-    AND (:datefin <= dateheure OR :datefin > (dateheure + duree))
-    AND (:datedebut <= dateheure AND :datefin >= (dateheure + duree)))");
+    $reqVerif = $linkpdo->prepare("SELECT * FROM rendezvous WHERE NOT(:datedebut >= (dateheure + duree) OR :datefin <= dateheure)");
     $reqVerif->execute(array('datedebut'=>$dateheure, 'datefin'=>($dateheure + $duree)));
     if($data = $reqVerif->fetch()) {
       header("Location: ../consultations.php?edit=errorRDVInterference");
