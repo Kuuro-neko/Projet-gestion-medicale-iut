@@ -164,6 +164,7 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 							<input type="hidden" name="date" value="<?php echo $data['dateheure']; ?>">
 							<input type="hidden" name="duree" value="<?php echo $data['duree']; ?>">
 							<input type="hidden" name="id_patient" value="<?php echo $data['rdv_id_pat']; ?>">
+							<input type="hidden" name="update" value="true">
 						</form>
 						<form method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette consultation ?');">
 							<input class="delete" type="submit" name="delete" value="Supprimer"></input>
