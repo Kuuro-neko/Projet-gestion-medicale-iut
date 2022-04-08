@@ -81,12 +81,12 @@ if(isset($_GET["disconnect"])) {
                 <div class="textinputs">
                 <?php 
                 if(!empty($_GET['date'])) {
-                    $placeholder = " placeholder=\"".date('Y-m-d', date($_GET['date']))."\"";
+                    $dateValue = " value=\"".date('Y-m-d', date($_GET['date']))."\"";
                 } else {
-                    $placeholder ="";
+                    $dateValue ="";
                 }
                 ?>
-                    Date <input type="date" name="date"<?php echo $placeholder;?> required></input>
+                    Date <input type="date" name="date"<?php echo $dateValue;?> required></input>
                     <div class="heures">
                         
                         <fieldset class="time">
