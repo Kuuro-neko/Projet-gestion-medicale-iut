@@ -36,7 +36,6 @@ if(isset($_GET["disconnect"])) {
 	?>
 	<p id="welcome">Bienvenue sur le site de gestion du cabinet médical !</p>
 	<h1>Statistiques</h1>
-	<p>En développement ! :)</p>
 	<?php
 		include 'php/statistiques.php';
 		include "php/footer.php";
