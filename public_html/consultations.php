@@ -113,8 +113,9 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 	}
 	?>
 	<div class="ajouterHorsCalendrier">
-		<button class="retourSemaineActuelle" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
+		<button class="ajouterconsultation" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
 	</div>
+	<!-- Navigation dans le calendrier -->
 	<div class="semaines">
 		<button class="semainePrec" onclick="location.href='consultations.php?week=<?php echo $prevWeek.'&year='.$prevYear; ?>'" type="button">⇦ Semaine <?php echo $prevWeek; ?></button>
 		<div id="centreSemaines">
