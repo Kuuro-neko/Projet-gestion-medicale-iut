@@ -12,8 +12,6 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,9 +59,7 @@ if(isset($_GET["disconnect"])) {
 						 }
 
 	}
-	?>
 
-	<?php	
 	// Si patient supprimé
 	if(!empty($_GET['id_patient'])) {
 		require 'php/connexiondb.php';
@@ -76,19 +72,16 @@ if(isset($_GET["disconnect"])) {
 			echo "<p class=\"error\">Erreur lors de la suppression</p>";
 		}
 	}
-	?>
-	<?php	
-		// Si patient modifié
-		if(!empty($_GET['edit'])) {
-			if($_GET['edit'] === "success") {
-				echo "<p class=\"success\">Patient modifié avec succès !</p>";
-			} else {
-				echo "<p class=\"error\">Erreur lors de la modification</p>";
-			}
+
+	// Si patient modifié
+	if(!empty($_GET['edit'])) {
+		if($_GET['edit'] === "success") {
+			echo "<p class=\"success\">Patient modifié avec succès !</p>";
+		} else {
+			echo "<p class=\"error\">Erreur lors de la modification</p>";
 		}
+	}
 	?>
-
-
 	<div class="formContainer">
 		<fieldset id="rechercher">
 			<legend>Rechercher un patient</legend>

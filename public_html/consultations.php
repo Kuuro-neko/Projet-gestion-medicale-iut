@@ -14,7 +14,6 @@ if(isset($_GET["disconnect"])) {
 	header("Location: index.php");
 }
 
-
 // Si consultation à supprimer
 if(isset($_POST['delete'])) {
 	require "php/connexiondb.php";
@@ -44,7 +43,6 @@ function daysInWeek($yearNum, $weekNum)
     }
     return $result;
 }
-
 
 // Affecter les valeurs à l'année et semaine affichée sur la page
 if(empty($_GET['year'])) {
@@ -76,6 +74,7 @@ if ($_SESSION['week'] - 1 < 1) {
 	$prevWeek = $_SESSION['week'] - 1;
 }
 
+// Creer un tableau contenant le timestamp de début et de fin des 7 jours de la semaine courante pour l'affichage des consultations dans le calendrier
 $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 
 ?>
@@ -133,8 +132,7 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 		WHERE rendezvous.id_medecin = medecin.id_medecin AND rendezvous.id_patient = patient.id_patient AND dateheure > :debutintervalle AND dateheure < :finintervalle ORDER BY dateheure');
 	
 	?>
-	
-
+	<!-- Calendrier -->
 	<div class="consultations">
 		<?php
 		for($i = 0; $i < 6; $i++) {
@@ -175,7 +173,6 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 				</div>
 				<?php
 			}
-
 			echo "</div>";
 		}
 		?>

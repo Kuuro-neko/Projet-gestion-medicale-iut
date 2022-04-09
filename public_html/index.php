@@ -15,8 +15,6 @@ if(!empty($_POST['login']) && !empty($_POST['mdp']) && empty($_SESSION['signedin
    } else {
 	   $msgErreur = "Login ou mdp erroné";
    }
-} elseif (isset($_POST['signin'])) {
-	$msgErreur = "Veuillez renseigner les 2 champs";
 }
 ?>
 <!DOCTYPE html>
@@ -40,8 +38,8 @@ if(!empty($_POST['login']) && !empty($_POST['mdp']) && empty($_SESSION['signedin
 	<form action="index.php" class="connexion" method="post">
    		<fieldset>
 			<legend class="title">Connexion</legend>
-			<input type="text" name="login" placeholder="Nom d'utilisateur"></input>
-			<input type="password" name ="mdp" placeholder="Mot de passe"></input>
+			<input type="text" name="login" placeholder="Nom d'utilisateur" required></input>
+			<input type="password" name ="mdp" placeholder="Mot de passe" required></input>
 			<?php
 			if ($msgErreur != "") {
 				echo "<p class=\"error\">".$msgErreur."</p>";

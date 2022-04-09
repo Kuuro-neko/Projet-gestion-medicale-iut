@@ -13,8 +13,6 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,8 +38,6 @@ if(isset($_GET["disconnect"])) {
 		include "php/header.php";
 	?>
 	<h1>Ajouter une consultation</h1>
-	
-
     <?php if(empty($_GET['id_patient'])) { ?>
         <!-- Selection du patient -->
         <fieldset>
@@ -79,21 +75,17 @@ if(isset($_GET["disconnect"])) {
             <legend class="title">Choisissez le créneau</legend>
             <form method="post" action="php/requeteajouterconsultation.php">
                 <div class="textinputs">
-                <?php 
+                <?php
+                // Récupération des variables si passées par GET
                 if(!empty($_GET['date'])) {
                     $dateValue = " value=\"".date('Y-m-d', date($_GET['date']))."\"";
-                } else {
-                    $dateValue ="";
-                }
-
-                if(!empty($_GET['date'])) {
                     $debutHeureValue = strftime('%H', $_GET['date']);
                     $debutMinValue = date('i', $_GET['date']);
                 } else {
+                    $dateValue ="";
                     $debutHeureValue = "7";
                     $debutMinValue = "0";
                 }
-
                 if(!empty($_GET['duree'])) {
                     $dureeHeureValue = strftime('%H', $_GET['duree']);
                     $dureeMinValue = date('i', $_GET['duree']);
@@ -104,14 +96,15 @@ if(isset($_GET["disconnect"])) {
                 ?>
                     Date <input type="date" name="date"<?php echo $dateValue;?> required></input>
                     <div class="heures">
-                        
                         <fieldset class="time">
+                        <!-- Heure de début -->
                         <legend class="timelegend">Heure de début</legend>
                             Heures <input type="number" name="debutheure" value="<?php echo $debutHeureValue; ?>" min="7" max="23" required></input>
                             Minutes <input type="number" name="debutmin" value="<?php echo $debutMinValue; ?>" min="0" max="59" required></input>
                         </fieldset>
                         
                         <fieldset class="time">
+                        <!-- Durée -->
                         <legend class="timelegend">Durée</legend>
                             Heures <input type="number" name="dureeheure" value="<?php echo $dureeHeureValue; ?>" min="0" max="10" required></input>
                             Minutes <input type="number" name="dureemin" value="<?php echo $dureeMinValue; ?>" min="0" max="59" required></input>
@@ -127,7 +120,7 @@ if(isset($_GET["disconnect"])) {
                         $req->execute(array('id_patient'=>$_GET['id_patient']));
                        
                         if($data = $req->fetch()) {
-                            // Si le patient a un médecin traitent, le proposer
+                            // Si le patient a un médecin traitent, le proposer 
                             echo "<option value=\"".$data['id_medecin']."\">".$data['nom']." ".$data['prenom']."</option>";
                             $requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin where id_medecin <> :idmed ORDER BY nom");
                             $requ->execute(array('idmed'=>$data['id_medecin']));
@@ -138,7 +131,6 @@ if(isset($_GET["disconnect"])) {
                             <option value="NULL">Choix du médecin</option>
                             <?php
                             // Sinon, montrer tous les médecins
-
                             $requ = $linkpdo->prepare("SELECT nom, prenom, id_medecin FROM medecin ORDER BY nom");
                             $requ->execute();
                             while($data2 = $requ->fetch()) {
@@ -159,7 +151,6 @@ if(isset($_GET["disconnect"])) {
                 <input type="hidden" value="<?php echo $_GET['id_patient']; ?>" name="id_patient"></input>
             </form>
         </fieldset>
-
 	<?php
     }
 		include "php/footer.php";

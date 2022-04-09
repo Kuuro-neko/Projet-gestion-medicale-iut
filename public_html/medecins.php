@@ -12,8 +12,6 @@ if(isset($_GET["disconnect"])) {
 	session_destroy();
 	header("Location: index.php");
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,9 +52,7 @@ if(isset($_GET["disconnect"])) {
 			echo "<p class=\"error\">Erreur, données saisies non valides</p>";
 		}
 	}
-	?>
 
-	<?php	
 	// Si medecin supprimé
 	if(!empty($_GET['id_medecin'])) {
 		require 'php/connexiondb.php';
@@ -69,8 +65,7 @@ if(isset($_GET["disconnect"])) {
 			echo "<p class=\"error\">Erreur lors de la suppression</p>";
 		}
 	}
-	?>
-	<?php	
+
 	// Si médecin modifié
 	if(!empty($_GET['edit'])) {
 		if($_GET['edit'] === "success") {
