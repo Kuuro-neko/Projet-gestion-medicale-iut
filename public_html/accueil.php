@@ -35,6 +35,7 @@ if(isset($_GET["disconnect"])) {
 		include "php/header.php";
 	?>
 	<p id="welcome">Bienvenue sur le site de gestion du cabinet médical !</p>
+	<img id="logoaccueil" src="images/logo.png" height=200></img>
 	<h1>Statistiques</h1>
 	<?php
 		include 'php/statistiques.php';

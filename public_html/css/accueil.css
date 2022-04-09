@@ -85,3 +85,29 @@ p {
 td, tr, th, h2 {
 	color: white;
 }
+
+.pair td, .impair td {
+	border: 2px solid hsl(214, 13%, 16%);
+	padding: 1px;
+	width: max-content;
+}
+
+.pair {
+	background-color: rgb(47, 88, 99);
+}
+
+.impair {
+	background-color: rgb(41, 72, 72);
+}
+
+table {
+	background-color: var(--fg-color);
+	border: 2px solid hsl(0, 0%, 63%);
+	padding: 8px;
+	border-radius: 10px;
+	margin-bottom: 80px;
+}
+
+#logoaccueil {
+	margin: 25px 0px 60px 0px;
+}
