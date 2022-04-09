@@ -29,7 +29,6 @@ if(!empty($_GET['id_patient'])) {
 	$req->execute(array('id_patient'=>$_GET['id_patient']));
 
 	$data = $req->fetch();
-	
 }
 ?>
 <!DOCTYPE html>
@@ -117,8 +116,6 @@ if(!empty($_GET['id_patient'])) {
 			<input type="hidden" value="<?php echo $data['id_patient']; ?>" name="id_patient"></input>
 		</form>
 	</fieldset>
-	
-
 	<?php
 		include "php/footer.php";
 	?>

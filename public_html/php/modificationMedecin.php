@@ -1,10 +1,6 @@
 <?php
     require 'config.php';
     require 'connexiondb.php';
-    var_dump($_POST['civilite']);
-    var_dump($_POST['nom']);
-    var_dump($_POST['prenom']);
-    var_dump($_POST['id_medecin']);
 
     $reqEdit = $linkpdo->prepare("UPDATE medecin SET civilite = :civilite, nom = :nom, prenom = :prenom WHERE id_medecin = :id_medecin");
 

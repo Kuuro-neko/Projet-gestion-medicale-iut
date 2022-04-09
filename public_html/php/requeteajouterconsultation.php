@@ -34,13 +34,6 @@
       }
     }
 
-/*
-    $reqVerif = $linkpdo->prepare("SELECT * FROM rendezvous WHERE NOT(:datedebut >= (dateheure + duree) AND :datefin <= dateheure) AND id_medecin = :id_medecin");
-    $reqVerif->execute(array('datedebut'=>$dateheure, 'datefin'=>($dateheure + $duree), 'id_medecin'=>$_POST['medecin']));
-    if($data = $reqVerif->fetch()) {
-      header("Location: ../consultations.php?edit=errorHeure");
-    }
-*/
     if($creneauValide && isset($_POST['ajouter'])) {
       $reqEdit = $linkpdo->prepare("INSERT INTO rendezvous (dateheure, duree, id_medecin, id_patient) VALUES (:dateheure, :duree, :id_medecin, :id_patient)");
   

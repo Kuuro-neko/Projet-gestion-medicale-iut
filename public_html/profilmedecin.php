@@ -51,8 +51,8 @@ $data = $req->fetch();
 		</legend>
 		<form method="post" action="php/modificationMedecin.php">
 			<div class="textinputs">
-
-				Civilité<select name="civilite" required>
+				Civilité
+				<select name="civilite" required>
 					<?php
 						if($data['civilite'] === "Monsieur") {
 							?>
@@ -67,8 +67,11 @@ $data = $req->fetch();
 						} ?>
 				</select>
 
-				Nom<input type="text" name="nom" value="<?php echo $data['nom']; ?>" required></input>
-				Prénom<input type="text" name="prenom" value="<?php echo $data['prenom']; ?>" required></input>
+				Nom
+				<input type="text" name="nom" value="<?php echo $data['nom']; ?>" required></input>
+
+				Prénom
+				<input type="text" name="prenom" value="<?php echo $data['prenom']; ?>" required></input>
 			</div>
 			<div class="submitinputs">
 				<input class="edit" type="submit" name="modifier" value="Modifier"></input> 
@@ -77,8 +80,6 @@ $data = $req->fetch();
 			<input type="hidden" value="<?php echo $data['id_medecin']; ?>" name="id_medecin"></input>
 		</form>
 	</fieldset>
-	
-
 	<?php
 		include "php/footer.php";
 	?>
