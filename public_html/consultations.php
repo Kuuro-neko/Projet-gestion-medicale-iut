@@ -21,6 +21,11 @@ if(isset($_POST['delete'])) {
 	$delete->execute(array('id_medecin'=>$_POST['id_medecin'], 'dateheure'=>$_POST['dateheure']));
 }
 
+// Si l'utilisateur veut aller à une semaine rapidement
+if(isset($_POST['goto'])) {
+	header("Location:consultations.php?week=".intval(date("W", strtotime($_POST['gotodate'])))."&year=".intval(date("Y", strtotime($_POST['gotodate']))));
+}
+
 // Retourne le nombre de semaines (int) d'une année (int)
 function getWeeksInYear($year) {
     $date = new DateTime;
@@ -124,6 +129,10 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 				if($_SESSION['week'] !=  intval(date("W", time()))) {
 			?> <a id="reset" href='consultations.php'>Retour semaine courante</a> <?php
 				} ?>
+			<form method="post">
+				<input type="date" name="gotodate"></input>
+				<input type="submit" name="goto" value="Aller à la semaine sélectionnée"></input>
+			</form>
 		</div>
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>
 	</div>
