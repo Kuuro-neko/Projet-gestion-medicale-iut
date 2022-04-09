@@ -118,20 +118,21 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 	}
 	?>
 	<div class="ajouterHorsCalendrier">
-		<button class="ajouterconsultation" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
+		<button class="bouton" onclick="location.href='ajoutconsultation.php'" type="button">Créer une nouvelle consultation</button>
 	</div>
 	<!-- Navigation dans le calendrier -->
 	<div class="semaines">
 		<button class="semainePrec" onclick="location.href='consultations.php?week=<?php echo $prevWeek.'&year='.$prevYear; ?>'" type="button">⇦ Semaine <?php echo $prevWeek; ?></button>
 		<div id="centreSemaines">
 			<p id="dispSemaine">Année <?php echo $_SESSION['year']; ?> Semaine <?php echo $_SESSION['week']; ?></p>
-			<?php
-				if($_SESSION['week'] !=  intval(date("W", time()))) {
-			?> <a id="reset" href='consultations.php'>Retour semaine courante</a> <?php
-				} ?>
+
 			<form method="post">
 				<input type="date" name="gotodate"></input>
-				<input type="submit" name="goto" value="Aller à la semaine sélectionnée"></input>
+				<input class="bouton" type="submit" name="goto" value="Aller à la semaine sélectionnée"></input>
+				<?php
+				if($_SESSION['week'] !=  intval(date("W", time()))) {
+			?> <a id="reset" href='consultations.php'>&nbsp;Retour semaine courante</a> <?php
+				} ?>
 			</form>
 		</div>
 		<button class="semaineSuiv" onclick="location.href='consultations.php?week=<?php echo $nextWeek.'&year='.$nextYear; ?>'" type="button">Semaine <?php echo $nextWeek; ?> ⇨</button>

@@ -57,7 +57,7 @@ p {
     color: var(--turquoise-logo);
 }
 
-.semainePrec:hover, .semaineSuiv:hover, .ajouterconsultation:hover {
+.semainePrec:hover, .semaineSuiv:hover, .bouton:hover {
     background: radial-gradient(rgb(60, 187, 149),rgb(117, 179, 152));
 	opacity: 1;
 }
@@ -125,7 +125,7 @@ p {
     
 }
 
-input[type=submit], .delete, .ajouterconsultation {
+input[type=submit], .delete, .bouton {
 	border: 1px solid transparent;
 	border-radius: 3px;
 	opacity: 0.8;
