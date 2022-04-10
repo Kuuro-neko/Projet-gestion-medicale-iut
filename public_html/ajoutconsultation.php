@@ -141,11 +141,7 @@ if(isset($_GET["disconnect"])) {
 
                 </div>
                 <div class="submitinputs">
-                    <?php if(!empty($_GET['update'])) { ?>
-                        <input type="submit" name="modifier" value="Modifier"></input>
-                   <?php  } else { ?>
-                        <input type="submit" name="ajouter" value="Ajouter"></input>
-                    <?php } ?>
+                    <input type="submit" name="ajouter" value="Ajouter"></input>
                     <button class="cancel" onclick="location.href='ajoutconsultation.php'" type="button">Annuler</button>
                 </div>
                 <input type="hidden" value="<?php echo $_GET['id_patient']; ?>" name="id_patient"></input>

@@ -168,13 +168,6 @@ $currentWeek = daysInWeek($_SESSION['year'], $_SESSION['week']);
 					<p class="patient">Patient : <?php echo $data['pnom']." ".$data['pprenom']."."; ?></p>
 					<p class="medecin">Médecin : <?php echo $data['mnom']." ".$data['mprenom']."."; ?></p>
 					<div class="btConsultation">
-						<form action="ajoutconsultation.php" method="get">
-							<input class="edit" type="submit" name="edit" value="Modifier"></input>
-							<input type="hidden" name="date" value="<?php echo $data['dateheure']; ?>">
-							<input type="hidden" name="duree" value="<?php echo $data['duree']; ?>">
-							<input type="hidden" name="id_patient" value="<?php echo $data['rdv_id_pat']; ?>">
-							<input type="hidden" name="update" value="true">
-						</form>
 						<form method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette consultation ?');">
 							<input class="delete" type="submit" name="delete" value="Supprimer"></input>
 							<input type="hidden" name="dateheure" value="<?php echo $data['dateheure']; ?>">
